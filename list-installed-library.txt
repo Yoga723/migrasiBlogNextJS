@@ -1,0 +1,31 @@
+Installed library with node.
+    "@reduxjs/toolkit": "^2.5.1",
+    "@remixicon/react": "^4.6.0",
+    "animate.css": "^4.1.1",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "glightbox": "^3.3.1",
+    "jquery": "^3.7.1",
+    "next": "15.1.6",
+    "quill": "^2.0.3",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "swiper": "^11.2.1"
+
+
+Not Yet Imported in blog page
+1. blog-content: <link href="asset/part/blog-content/blog.css" rel="stylesheet" /> 
+2. CTA Append : <link href="asset/part/cta-append/cta.css" rel="stylesheet" />
+
+  <!-- Element -->
+  <script src="asset/js/category.js"></script>
+  <script src="asset/js/classes.js"></script>
+
+  <!-- Part JS -->
+  <script src="asset/part/modals/modal-component.js"></script>
+  <script src="asset/part/modals/modal-iklan.js"></script>
+
+
+
+Not Yet Imported in blog index
+1. 

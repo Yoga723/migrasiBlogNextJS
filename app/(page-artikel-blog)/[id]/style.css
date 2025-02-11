@@ -1,0 +1,28 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+section {
+  padding: 0px;
+  margin: 0px;
+}
+h1 {
+  text-align: left;
+}
+
+.roundedBorder {
+  justify-content: space-between;
+  border-radius: 10px;
+  border: 1px solid;
+  padding: 7px 9px;
+}
+h2 {
+  color: rgb(56, 53, 53);
+  font-size: 38px;
+}
+.button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 10px;
+}

@@ -1,0 +1,12 @@
+form span .tooltip-icon {
+  padding: 0 4px;
+  cursor: help;
+  font-size: 0.9em;
+  margin-left: 4px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
