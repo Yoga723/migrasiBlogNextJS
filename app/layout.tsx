@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./styles/globals.css";
 import { basePath } from "@/next.config";
-import Footer from "@/components/shared/Footer";
-import Header from "@/components/shared/Header";
-import BootstrapJS from "@/components/shared/utils/BootstrapJS";
-import TrackingScript from "@/components/shared/utils/TrackingScript";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import BootstrapJS from "@/components/utils/BootstrapJS";
+import TrackingScript from "@/components/utils/TrackingScript";
 
 // Global metadata
 export const metadata: Metadata = {

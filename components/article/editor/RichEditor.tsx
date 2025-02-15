@@ -1,3 +1,4 @@
+// Komponen ini menggunakan Quill.JS
 "use client";
 import React, { useEffect, useRef } from "react";
 import Quill from "quill";
@@ -33,7 +34,7 @@ const RichEditor = () => {
         theme: "snow",
       });
     }
-  }, []);
+  });
 
   const handleGetContent = () => {
     if (quillRef.current) {

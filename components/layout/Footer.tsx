@@ -6,12 +6,14 @@ import igImg3 from "@/public/assets/img/ig/3.jpg";
 import igImg4 from "@/public/assets/img/ig/4.jpg";
 import bankSupport from "@/public/assets/img/bank.webp";
 import eWalletSupport from "@/public/assets/img/wallet.webp";
+import FooterModal from "./modals/FooterModal";
 import HAM from "@/public/assets/img/ham.webp";
 import Image from "next/image";
 
 const Footer = () => {
   return (
     <footer id="footer">
+      <FooterModal />
       <div className="footer-top">
         <div className="container">
           <div className="row justify-content-between">

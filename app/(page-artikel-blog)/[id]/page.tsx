@@ -1,12 +1,11 @@
 import React from "react";
 import "./style.css";
 import { generatePaths } from "@/lib/generateStaticPaths";
-import { blogArticleDummy, BlogArticleProps } from "@/public/data/dummyData";
-import Breadcrumbs from "@/components/shared/Breadcrumbs";
-import SidebarSocial from "@/components/shared/SidebarSocial";
-import SidebarWidget from "@/components/shared/SidebarWidgetUser";
-import SidebarProgramOffer from "@/components/shared/SidebarProgramOffer";
-import ArticleDetails from "@/components/article-page-component/ArticleDetails";
+import { blogArticleDummy } from "@/public/data/dummyData";
+import { BlogArticleProps } from "@/types";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import { Social, ProgramOffer, Widget } from "@/components/sidebars";
+import ArticleDetails from "@/components/article/ArticleDetails";
 import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/utils/date";
@@ -56,7 +55,7 @@ export default async function Page({ params }: any) {
           <div className="row">
             {/* Section Sidebar Social Media */}
             <aside className="col-lg-1 mt-3">
-              <SidebarSocial />
+              <Social />
             </aside>
 
             {/* Section Konten Blog */}
@@ -120,7 +119,7 @@ export default async function Page({ params }: any) {
             {/* Section Blog Authors */}
             <aside className="col-lg-4 mt-3 gap-4 flex-column d-flex">
               {blogArticle.authors.map((item, index) => (
-                <SidebarWidget
+                <Widget
                   key={index}
                   author={item.authorName}
                   pageType={"article"}
@@ -152,7 +151,7 @@ export default async function Page({ params }: any) {
                 </div>
               </section>
 
-              <SidebarProgramOffer />
+              <ProgramOffer />
             </aside>
           </div>
         </div>
