@@ -1,5 +1,5 @@
 "use client";
-import { BlogArticleProps } from "@/public/data/dummyData";
+import { BlogArticleProps } from "@/types";
 import { formatDate } from "@/utils/date";
 import Image from "next/image";
 import Link from "next/link";

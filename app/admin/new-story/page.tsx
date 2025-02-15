@@ -1,5 +1,5 @@
-import FormArticle from "@/components/admin-page-component/create-article-page-component/FormArticle";
-import Breadcrumbs from "@/components/shared/Breadcrumbs";
+import FormArticle from "@/components/article/editor/FormArticle";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import React from "react";
 import "./style.css";
 

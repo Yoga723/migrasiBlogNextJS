@@ -9,7 +9,7 @@ type ProgramItem = {
   itemClass?: string;
 };
 
-const SidebarProgramOffer = () => {
+const ProgramOffer = () => {
   const ourPrograms: ProgramItem[] = [
     // Copy & Paste object dibawah ini untuk men-generate card baru
     {
@@ -36,35 +36,28 @@ const SidebarProgramOffer = () => {
     },
   ];
 
-  const ProgramLink = ({ href, target = "_blank", tag, title, itemClass }: ProgramItem) => (
-    <a
-      href={href}
-      target={target}
-      rel="noopener noreferrer" // Added for security best practice
-    >
-      <div className={`sidePost__item ${itemClass} mt-4`}>
-        <div className="sidePost__content">
-          <span className="tag">{tag}</span>
-          <h5 className="title tgcommon__hover">{title}</h5>
-        </div>
-      </div>
-    </a>
-  );
-
   return (
     <section className="widget sidebar-widget-class mt-4 order-1 order-md-3">
       {/* Our Program Section */}
       <section aria-label="Our internship program">
         <h3 className="sidebar-title">Our Program</h3>
         {ourPrograms.map((program, index) => (
-          <ProgramLink
-            key={`program-${index}`}
-            {...program}
-          />
+          <a
+            key={index}
+            href={program.href}
+            target={program.target}
+            rel="noopener noreferrer" // Added for security best practice
+          >
+            <div className={`sidePost__item ${program.itemClass} mt-4`}>
+              <div className="sidePost__content">
+                <span className="tag">{program.tag}</span>
+                <h5 className="title tgcommon__hover">{program.title}</h5>
+              </div>
+            </div>
+          </a>
         ))}
       </section>
 
-      {/* Spacing */}
       <br aria-hidden="true" />
 
       {/* Best Class Section */}
@@ -72,10 +65,19 @@ const SidebarProgramOffer = () => {
         <h3 className="sidebar-title">Best Class</h3>
         <div className="sidePost-active">
           {bestClasses.map((cls, index) => (
-            <ProgramLink
-              key={`class-${index}`}
-              {...cls}
-            />
+            <a
+              key={index}
+              href={cls.href}
+              target={cls.target}
+              rel="noopener noreferrer" // Added for security best practice
+            >
+              <div className={`sidePost__item ${cls.itemClass} mt-4`}>
+                <div className="sidePost__content">
+                  <span className="tag">{cls.tag}</span>
+                  <h5 className="title tgcommon__hover">{cls.title}</h5>
+                </div>
+              </div>
+            </a>
           ))}
         </div>
       </section>
@@ -83,4 +85,4 @@ const SidebarProgramOffer = () => {
   );
 };
 
-export default SidebarProgramOffer;
+export default ProgramOffer;

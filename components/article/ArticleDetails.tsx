@@ -1,12 +1,12 @@
 "use client";
-import { BlogArticleProps } from "@/public/data/dummyData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Script from "next/script";
 import React from "react";
 import { faCircleChevronRight, faFeather } from "@fortawesome/free-solid-svg-icons";
+import { BlogArticleProps } from "@/types";
 
-const ArticleDetails = ({ authors, publishedAt, writerNote, keywords }: BlogArticleProps) => {
+const ArticleDetails = ({ authors, publishedAt, writerNote }: BlogArticleProps) => {
   const formattedDate = new Date(publishedAt).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long", // "long" displays full month name; use "short" if desired
@@ -147,7 +147,7 @@ const ArticleDetails = ({ authors, publishedAt, writerNote, keywords }: BlogArti
                   className="d-flex gap-3">
                   <Image
                     src={`${author.imgPath}`}
-                    alt={keywords}
+                    alt={author.authorName}
                     loading="lazy"
                     width={60}
                     height={60}

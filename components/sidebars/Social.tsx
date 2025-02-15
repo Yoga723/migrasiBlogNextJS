@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faTwitter, faLinkedinIn, faTiktok, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
-const SidebarSocial = () => {
+const Social = () => {
   return (
     <div className="blog-details-social">
       <ul className="list-wrap">
@@ -61,4 +61,4 @@ const SidebarSocial = () => {
   );
 };
 
-export default SidebarSocial;
+export default Social;

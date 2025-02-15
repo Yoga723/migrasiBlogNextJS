@@ -4,13 +4,13 @@ import Image from "next/image";
 import React from "react";
 import type { StaticImageData } from "next/image";
 
-interface sideBardWidgetProps {
+interface WidgetProps {
   imgPath: string | StaticImageData;
   pageType?: string;
   author?: string;
 }
 
-const SidebarWidget = ({ imgPath, pageType = "article", author }: sideBardWidgetProps) => {
+const Widget = ({ imgPath, pageType = "article", author }: WidgetProps) => {
   const socialLinks = [
     { href: "https://instagram.com/dialogika.co", icon: faInstagram, width: 20 },
     { href: "https://twitter.com/dialogika_co", icon: faTwitter, width: 20 },
@@ -57,4 +57,4 @@ const SidebarWidget = ({ imgPath, pageType = "article", author }: sideBardWidget
   );
 };
 
-export default SidebarWidget;
+export default Widget;
