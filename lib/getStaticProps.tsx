@@ -5,7 +5,7 @@ import dbConnect from "./mongodb/mongodb";
  * Mengambil data author dari MongoDB secara statis.
  * Menggunakan getStaticProps untuk mendukung ISR (Incremental Static Regeneration).
  */
-export async function getStaticAuthorsProps() {
+export async function getStaticProps() {
   // Hubungkan ke MongoDB
   await dbConnect();
   // Ambil data author dan gunakan .lean() untuk mengubah ke plain JS object

@@ -25,7 +25,7 @@ const JoditRichEditor = () => {
         Check Value Jodit Editor
       </button>
       <JoditEditor
-        editorRef={editor}
+        editorRef={(ref) => (editor.current = ref)}
         value={editorValue}
         name="formEditor"
         config={config}
