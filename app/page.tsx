@@ -6,7 +6,7 @@ import { blogArticleDummy } from "@/public/data/dummyData";
 import logoDialogika from "@/public/assets/img/logo-square.png";
 
 export default async function Home() {
-  const articles = await blogArticleDummy;
+  const articles =  blogArticleDummy;
 
   return (
     <>
