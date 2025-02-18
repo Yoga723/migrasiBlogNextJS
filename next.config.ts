@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 export const basePath = "/blog";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  output: "export",
   trailingSlash: true,
 
   // Sesuaikan basePath dengan nama dari repository di github. Jika reponya article, maka "/article"

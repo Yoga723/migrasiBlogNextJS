@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import JoditEditor from "jodit-pro-react";
-
+// 
 const JoditRichEditor = () => {
   const editor = useRef<any>(null);
   const [editorValue, setEditorValue] = useState(""); // Isi dari text/Jodit editor disimpan disini
