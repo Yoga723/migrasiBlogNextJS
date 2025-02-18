@@ -1,10 +1,10 @@
 import mongoose, { Schema } from "mongoose";
 
 // Sub-schemas untuk array
-const ImageSchema = new Schema({
-  name: { type: String, required: true },
-  src: { type: String, required: true },
-});
+// const ImageSchema = new Schema({
+//   name: { type: String, required: true },
+//   src: { type: String, required: true },
+// });
 
 const AuthorSchema = new Schema({
   authorName: { type: String, required: true },
@@ -17,10 +17,10 @@ const OutBoundLinkSchema = new Schema({
   link: { type: String, default: "https://medium.com/dialogika" },
 });
 
-const ArticleQuoteSchema = new Schema({
-  figure: { type: String, required: true },
-  quote: { type: String, required: true },
-});
+// const ArticleQuoteSchema = new Schema({
+//   figure: { type: String, required: true },
+//   quote: { type: String, required: true },
+// });
 
 // Delta content schema (for Quill.js)
 const DeltaSchema = new Schema(
@@ -35,7 +35,7 @@ const DeltaSchema = new Schema(
   { _id: false }
 );
 
-// Skema artikel untuk database di mongoDB
+// Skema article untuk database di mongoDB
 const articleSchema = new Schema(
   {
     title: {
@@ -58,10 +58,10 @@ const articleSchema = new Schema(
     cardsDescription: String,
     canonical: String,
     content: {
-      type: DeltaSchema,
+      type: String,
       required: [true, "Please provide the content for this article"],
     },
-    images: [ImageSchema],
+    // images: [ImageSchema],
     authors: [AuthorSchema],
     writerNote: {
       type: String,
@@ -74,7 +74,6 @@ const articleSchema = new Schema(
     keyTakeaway: [String],
     tags: [String],
     outBoundLink: OutBoundLinkSchema,
-    articleQuote: ArticleQuoteSchema,
   },
   {
     timestamps: true,

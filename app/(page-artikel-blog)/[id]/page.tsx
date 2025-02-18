@@ -8,7 +8,7 @@ import { Social, ProgramOffer, Widget } from "@/components/sidebars";
 import ArticleDetails from "@/components/article/ArticleDetails";
 import Image from "next/image";
 import Link from "next/link";
-import { formatDate } from "@/utils/date";
+import { formatDate } from "@/components/utils/date";
 
 export default async function Page({ params }: any) {
   const { id } = await params;
@@ -21,7 +21,7 @@ export default async function Page({ params }: any) {
     return (
       <>
         <Breadcrumbs
-          title="Artikel"
+          title="Article"
           breadcrumbs={[
             { title: "Home", link: "https://www.dialogika.co" },
             { title: "Blog", link: "../blog" },
@@ -76,7 +76,7 @@ export default async function Page({ params }: any) {
                 <h1 className="title mt-0 px-4 mt-4">{blogArticle.title}</h1>
                 <div className="meta-top px-4 py-1">
                   <ul>
-                    {/* List author yang menulis artikel */}
+                    {/* List author yang menulis article */}
                     {blogArticle.authors.map((author, index) => (
                       <li
                         className="d-flex align-items-center"
@@ -98,7 +98,7 @@ export default async function Page({ params }: any) {
                   </ul>
                 </div>
 
-                <div className="content p-4">{blogArticle.content}</div>
+                {/* <div className="content p-4">{blogArticle.content}</div> */}
                 <div className="meta-bottom d-flex gap-2 align-items-center px-4 py-3">
                   <i className="bi bi-folder"></i>
                   <ul className="cats">

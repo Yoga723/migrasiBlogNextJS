@@ -1,10 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import LabelInput from "./LabelInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faPlus } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import { storeAuthor } from "@/app/store";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/store";
 
 interface DynamicAuthorInputProps {
   name: string;
@@ -15,28 +16,17 @@ interface DynamicAuthorInputProps {
 }
 
 const DynamicAuthorInput = (props: DynamicAuthorInputProps) => {
-  // Ambil data authors dari redux store
-  const [authorState, setAuthorState] = useState(storeAuthor.getState().authorsDetail);
+  const authors = useSelector((state: RootState) => state.authors.authorsDetail);
   const [totalInputs, setTotalInputs] = useState([""]);
-  const [values, setValues] = useState<string[]>([authorState[0].authorName]);
-
-  useEffect(() => {
-    // Subscribe to the store.
-    const unsubscribe = storeAuthor.subscribe(() => {
-      // Update state bila terdapat perubahan di storeAuthor
-      setAuthorState(storeAuthor.getState().authorsDetail);
-    });
-
-    return () => unsubscribe();
-  }, []);
+  const [values, setValues] = useState<string[]>([authors[0].authorName]);
 
   // Add a new input, defaulting the selected author to the first one.
   const handleAddInput = () => {
     setTotalInputs([...totalInputs, ""]);
-    setValues([...values, authorState[0].authorName]);
+    setValues([...values, authors[0].authorName]);
   };
 
-  // Remove an input (and its corresponding selected author value) at a given index.
+  // Remove input sesuai dengan index
   const handleRemoveInput = (index: number) => {
     const newTotalInput = totalInputs.filter((iniTidakDipakai, i) => i !== index);
     setTotalInputs(newTotalInput);
@@ -45,7 +35,7 @@ const DynamicAuthorInput = (props: DynamicAuthorInputProps) => {
     setValues(newValues);
   };
 
-  // Update the selected author for the input at a given index.
+  // Update data dari input yang dipilih/sesuai dengan index
   const handleSelectChange = (index: number, selectedAuthorName: string) => {
     const newValues = [...values];
     newValues[index] = selectedAuthorName;
@@ -60,21 +50,27 @@ const DynamicAuthorInput = (props: DynamicAuthorInputProps) => {
         description={props.description}
         required={props.required}
       />
-      <div className="d-flex flex-column flex-md-row gap-3 mt-4 align-items-center justify-content-start">
+      <div className=" d-flex flex-wrap gap-3 mt-4 align-items-stretch justify-content-center">
         {totalInputs.map((tidakDipakai, index) => {
           // Find the selected author object based on the current value.
-          const selectedAuthor = authorState.find((author) => author.authorName === values[index]) || authorState[0];
+          const selectedAuthor = authors.find((author) => author.authorName === values[index]) || authors[0];
           return (
             <div
               key={index}
-              className="d-flex gap-3 flex-column align-items-center justify-content-center position-relative">
-              <div className="d-flex justify-content-around w-100">
+              id={`author-card-${index}`}
+              className="d-flex gap-3 flex-column h-auto align-items-center justify-content-around position-relative">
+              <div className="d-flex gap-2 justify-content-around">
                 <select
                   name={`${props.name}-${index}`}
                   id={`${props.name}-${index}`}
                   value={values[index]}
                   onChange={(e) => handleSelectChange(index, e.target.value)}>
-                  {authorState.map((author, idx) => (
+                  <option
+                    className="fst-italic"
+                    value="">
+                    Select Author
+                  </option>
+                  {authors.map((author, idx) => (
                     <option
                       key={idx}
                       value={author.authorName}>
@@ -101,7 +97,11 @@ const DynamicAuthorInput = (props: DynamicAuthorInputProps) => {
                 className="rounded"
                 alt={selectedAuthor.authorName}
               />
-              <p className="fst-italic">{selectedAuthor.quotes}</p>
+              <p
+                className="fst-italic"
+                style={{ width: 250 }}>
+                {selectedAuthor.quotes}
+              </p>
             </div>
           );
         })}

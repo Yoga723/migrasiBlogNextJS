@@ -8,14 +8,10 @@ export interface BlogArticleProps {
   cardsDescription?: string;
   canonical?: string;
   content: string;
-  images: Array<{
-    name: string;
-    src: string;
-  }>;
   authors: Array<{
     authorName: string;
     imgPath: string;
-    quotes?: string;
+    quotes?: string | "No quotes from me 🤪";
   }>;
   writerNote: string;
   publishedAt: string;
@@ -25,14 +21,10 @@ export interface BlogArticleProps {
     title: string | "Medium Dialogika";
     link: string | "https://medium.com/dialogika";
   };
-  articleQuote?: {
-    figure: string;
-    quote: string;
-  };
 }
 
 export interface BlogAuthorProps {
   authorName: string;
   imgPath: string;
-  quotes?: string;
+  quotes?: string | "No quotes from me 🤪";
 }

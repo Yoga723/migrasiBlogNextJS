@@ -1,18 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import LabelInput from "./LabelInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 interface dynamicInputProps {
   name: string;
   placeholder?: string;
-  description?: string;
-  required?: boolean;
   maxInputs: number;
 }
 
-const DynamicInput = ({ name, placeholder, description, required, maxInputs }: dynamicInputProps) => {
+const DynamicInput = ({ name, placeholder, maxInputs }: dynamicInputProps) => {
   const [totalInputs, setTotalInputs] = useState([""]);
   const [values, setValues] = useState<string[]>([]);
 
@@ -41,12 +38,6 @@ const DynamicInput = ({ name, placeholder, description, required, maxInputs }: d
   };
   return (
     <>
-      <LabelInput
-        htmlFor={name}
-        description={description}
-        required={required}
-        title={name}
-      />
       {totalInputs.map((input, index) => (
         <div
           key={index}
@@ -58,14 +49,17 @@ const DynamicInput = ({ name, placeholder, description, required, maxInputs }: d
             value={input}
             onChange={(e) => handleValuesChange(index, e.target.value)}
             placeholder={placeholder}
-            className="text-input w-fit"
+            className="text-input flex-1"
           />
           {totalInputs.length > 1 && (
             <button
               type="button"
               onClick={() => handleRemoveInput(index)}
-              className="bg-transparent border-0">
-              <FontAwesomeIcon icon={faCircleXmark} />
+              className="bg-transparent border-0 ">
+              <FontAwesomeIcon
+                icon={faCircleXmark}
+                style={{ color: "red", width: 20, height: 20 }}
+              />
             </button>
           )}
         </div>

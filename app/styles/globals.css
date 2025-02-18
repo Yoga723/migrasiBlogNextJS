@@ -5,6 +5,9 @@
 /* /blog merupakan basePath dari repo ini, sesuaikan dengan basePath di file next.config.ts  */
 
 /* Vendor CSS */
+@import "/blog/public/jodit/jodit.min.css";
+@import "/blog/public/jodit/plugins/debug/debug.min.css";
+@import "/blog/public/jodit/plugins/speech-recognize/speech-recognize.min.css";
 @import "/blog/assets/vendor/international-phone-number/intlTelInput.css";
 @import "/blog/assets/css/icomoon.css";
 @import "bootstrap/dist/css/bootstrap.min.css";

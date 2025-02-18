@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
 
-  // Sesuaikan basePath dengan nama dari repository di github. Jika reponya artikel, maka "/artikel"
+  // Sesuaikan basePath dengan nama dari repository di github. Jika reponya article, maka "/article"
   basePath: "/blog",
   images: {
     remotePatterns: [

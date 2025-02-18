@@ -1,3 +1,15 @@
+#FormArticle {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  #FormArticle {
+    min-height: auto;
+    overflow: visible;
+  }
+}
+
 form #upload-thumbnail-container {
   box-shadow: 0px 5px 16px -6px rgba(114, 4, 207, 1);
   -webkit-box-shadow: 0px 5px 16px -6px rgba(114, 4, 207, 1);

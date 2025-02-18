@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import BootstrapJS from "@/components/utils/BootstrapJS";
 import TrackingScript from "@/components/utils/TrackingScript";
+import ReduxProvider from "@/components/utils/ReduxProvider";
 
 // Global metadata
 export const metadata: Metadata = {
@@ -73,12 +74,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="id">
       <body className="antialiased">
-        <Header />
         <TrackingScript />
-        <main className="main mb-4">{children}</main>
-        <Footer />
+        <ReduxProvider>
+          <Header />
+          <main className="main mb-4">{children}</main>
+          <Footer />
 
-        {/* Global Scripts */}
+          {/* Global Scripts */}
+        </ReduxProvider>
         <GlobalScripts />
         <BootstrapJS />
       </body>
