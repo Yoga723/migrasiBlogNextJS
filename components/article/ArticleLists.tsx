@@ -19,7 +19,9 @@ const ArticleLists = ({ articles }: articlesProps) => {
   return (
     <>
       {articles.slice(0, visibleArticles).map((article, index) => (
-        <article className="article" key={index}>
+        <article
+          className="article"
+          key={index}>
           <div className="post-img">
             <Image
               src={article.thumbnail}
@@ -31,7 +33,9 @@ const ArticleLists = ({ articles }: articlesProps) => {
           </div>
 
           <h1 className="title">
-            <Link href={article.id} target="_blank">
+            <Link
+              href={`read/${article.id}`}
+              target="_blank">
               {article.title}
             </Link>
           </h1>
@@ -39,16 +43,20 @@ const ArticleLists = ({ articles }: articlesProps) => {
           <div className="meta-top">
             <ul>
               {article.authors.map((author, index) => (
-                <li className="d-flex align-items-center" key={index}>
+                <li
+                  className="d-flex align-items-center"
+                  key={index}>
                   <i className="bi bi-person"></i>
-                  <Link href={article.id} target="_blank">
+                  <Link
+                    href={`read/${article.id}`}
+                    target="_blank">
                     {author.authorName}
                   </Link>
                 </li>
               ))}
               <li className="d-flex align-items-center">
                 <i className="bi bi-clock"></i>
-                <Link href={article.id}>
+                <Link href={`read/${article.id}`}>
                   <time dateTime={article.publishedAt}>{formatDate(article.publishedAt)}</time>
                 </Link>
               </li>
@@ -58,7 +66,10 @@ const ArticleLists = ({ articles }: articlesProps) => {
           <div className="content">
             <p>{article.cardsDescription}</p>
             <div className="d-flex justify-content-end">
-              <Link href={article.id} target="_blank" className="btn appointment-btn">
+              <Link
+                href={`read/${article.id}`}
+                target="_blank"
+                className="btn appointment-btn">
                 Read More
               </Link>
             </div>
@@ -70,7 +81,7 @@ const ArticleLists = ({ articles }: articlesProps) => {
             <i className="bi bi-folder"></i>
             <ul className="cats">
               <li>
-                <Link href={article.id}>Tips</Link>
+                <Link href={`read/${article.id}`}>Tips</Link>
               </li>
             </ul>
           </div>
@@ -79,7 +90,11 @@ const ArticleLists = ({ articles }: articlesProps) => {
 
       {visibleArticles < articles.length && (
         <div className="text-center mt-4">
-          <button className="appointment-btn" id="show-more-btn" style={{ border: "none" }} onClick={handleShowMore}>
+          <button
+            className="appointment-btn"
+            id="show-more-btn"
+            style={{ border: "none" }}
+            onClick={handleShowMore}>
             More Article
           </button>
         </div>

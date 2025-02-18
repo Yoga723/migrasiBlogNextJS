@@ -29,7 +29,7 @@ const page = async () => {
         ]}
       />
       <section className="section container">
-        {/* <FormArticle authors={authors} /> */}
+        <FormArticle authors={authors} />
       </section>
     </>
   );
