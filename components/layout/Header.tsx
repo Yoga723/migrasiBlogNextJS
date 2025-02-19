@@ -62,7 +62,7 @@ const Header = () => {
       {/*   <!-- ======= Header ======= --> */}
       <header
         id="header"
-        className={`fixed-top ${!showTopbar && "header-scrolled"}`}>
+        className={`fixed-top ${!showTopbar && "header-scrolled"}  ${hideHeader && "d-none"}`}>
         <div className="container d-flex align-items-center">
           <Link
             href="../index.html"
@@ -251,7 +251,7 @@ const Header = () => {
       {/* <!-- End Header --> */}
 
       {/* <!-- ======= Mobile Nav ======= --> */}
-      <nav className="navbar-canvas fixed-top">
+      <nav className={` ${hideHeader && "d-none"} navbar-canvas fixed-top`}>
         <div className="container-fluid">
           <div
             className="offcanvas offcanvas-start"

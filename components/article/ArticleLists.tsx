@@ -34,7 +34,7 @@ const ArticleLists = ({ articles }: articlesProps) => {
 
           <h1 className="title">
             <Link
-              href={`read/${article.id}`}
+              href={`read/${article.idArticle}`}
               target="_blank">
               {article.title}
             </Link>
@@ -48,7 +48,7 @@ const ArticleLists = ({ articles }: articlesProps) => {
                   key={index}>
                   <i className="bi bi-person"></i>
                   <Link
-                    href={`read/${article.id}`}
+                    href={`read/${article.idArticle}`}
                     target="_blank">
                     {author.authorName}
                   </Link>
@@ -56,7 +56,7 @@ const ArticleLists = ({ articles }: articlesProps) => {
               ))}
               <li className="d-flex align-items-center">
                 <i className="bi bi-clock"></i>
-                <Link href={`read/${article.id}`}>
+                <Link href={`read/${article.idArticle}`}>
                   <time dateTime={article.publishedAt}>{formatDate(article.publishedAt)}</time>
                 </Link>
               </li>
@@ -67,7 +67,7 @@ const ArticleLists = ({ articles }: articlesProps) => {
             <p>{article.cardsDescription}</p>
             <div className="d-flex justify-content-end">
               <Link
-                href={`read/${article.id}`}
+                href={`read/${article.idArticle}`}
                 target="_blank"
                 className="btn appointment-btn">
                 Read More
@@ -81,7 +81,7 @@ const ArticleLists = ({ articles }: articlesProps) => {
             <i className="bi bi-folder"></i>
             <ul className="cats">
               <li>
-                <Link href={`read/${article.id}`}>Tips</Link>
+                <Link href={`read/${article.idArticle}`}>Tips</Link>
               </li>
             </ul>
           </div>

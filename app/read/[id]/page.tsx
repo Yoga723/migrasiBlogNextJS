@@ -12,7 +12,7 @@ import { formatDate } from "@/components/utils/date";
 
 export default async function Page({ params }: any) {
   const { id } = await params;
-  const blogArticle = blogArticleDummy.find((item: BlogArticleProps) => item.id.toString() === id);
+  const blogArticle = blogArticleDummy.find((item: BlogArticleProps) => item.idArticle.toString() === id);
 
   const categoriesList = ["Confidence", "Interview", "Productivity", "Introvert", "Communication", "Presentation"];
 
@@ -83,7 +83,7 @@ export default async function Page({ params }: any) {
                         key={index}>
                         <i className="bi bi-person"></i>
                         <Link
-                          href={`${blogArticle.id}`}
+                          href={`${blogArticle.idArticle}`}
                           target="_blank">
                           {author.authorName}
                         </Link>
@@ -91,7 +91,7 @@ export default async function Page({ params }: any) {
                     ))}
                     <li className="d-flex align-items-center">
                       <i className="bi bi-clock"></i>
-                      <Link href={`${blogArticle.id}`}>
+                      <Link href={`${blogArticle.idArticle}`}>
                         <time dateTime={`${blogArticle.publishedAt}`}>{formatDate(blogArticle.publishedAt)}</time>
                       </Link>
                     </li>
