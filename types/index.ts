@@ -1,5 +1,5 @@
 export interface BlogArticleProps {
-  id: string;
+  idArticle: string;
   title: string;
   thumbnail: string;
   metaData: string;

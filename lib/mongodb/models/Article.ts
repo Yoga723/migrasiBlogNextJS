@@ -23,21 +23,26 @@ const OutBoundLinkSchema = new Schema({
 // });
 
 // Delta content schema (for Quill.js)
-const DeltaSchema = new Schema(
-  {
-    ops: [
-      {
-        type: Schema.Types.Mixed,
-        required: true,
-      },
-    ],
-  },
-  { _id: false }
-);
+// const DeltaSchema = new Schema(
+//   {
+//     ops: [
+//       {
+//         type: Schema.Types.Mixed,
+//         required: true,
+//       },
+//     ],
+//   },
+//   { _id: false }
+// );
 
 // Skema article untuk database di mongoDB
 const articleSchema = new Schema(
   {
+    idArticle: {
+      type: String,
+      required: [true, "Please provide an id from title"],
+      unique: true,
+    },
     title: {
       type: String,
       required: [true, "Please provide a title for this article"],
@@ -61,7 +66,6 @@ const articleSchema = new Schema(
       type: String,
       required: [true, "Please provide the content for this article"],
     },
-    // images: [ImageSchema],
     authors: [AuthorSchema],
     writerNote: {
       type: String,
@@ -83,8 +87,8 @@ const articleSchema = new Schema(
 
 // If id is not provided, generate a new one
 articleSchema.pre("save", function (next) {
-  if (!this.id) {
-    this.id = this._id.toString();
+  if (!this.idArticle) {
+    this.idArticle = this._id.toString();
   }
   next();
 });

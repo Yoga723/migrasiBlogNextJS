@@ -1,7 +1,6 @@
 "use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import JoditEditor from "jodit-pro-react";
-// 
 const JoditRichEditor = () => {
   const editor = useRef<any>(null);
   const [editorValue, setEditorValue] = useState(""); // Isi dari text/Jodit editor disimpan disini
@@ -13,17 +12,8 @@ const JoditRichEditor = () => {
     []
   );
 
-  const handleValueClick = () => {
-    console.log("🚀 ~ JoditRichEditor ~ editorValue:", editorValue);
-  };
-
   return (
     <>
-      <button
-        type="button"
-        onClick={() => handleValueClick()}>
-        Check Value Jodit Editor
-      </button>
       <JoditEditor
         editorRef={(ref) => (editor.current = ref)}
         value={editorValue}

@@ -3,8 +3,11 @@ import Image from "next/image";
 import logoDialogika from "@/public/assets/img/logo.webp";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 const Header = () => {
   const [showTopbar, setShowTopbar] = useState(true);
+  const [hideHeader, setHideHeader] = useState(true);
+  const path = usePathname();
 
   const handleScroll = () => {
     if (window.scrollY > 100) setShowTopbar(false);
@@ -12,6 +15,7 @@ const Header = () => {
   };
 
   useEffect(() => {
+    if (path.toString().includes("new-story")) setHideHeader(true);
     // Initialize with current scroll position
     setShowTopbar(window.scrollY <= 100);
     window.addEventListener("scroll", handleScroll);
@@ -22,7 +26,9 @@ const Header = () => {
     <>
       <div
         id="topbar"
-        className={`d-flex align-items-center fixed-top${!showTopbar ? " topbar-scrolled" : ""}`}>
+        className={`d-flex align-items-center fixed-top ${!showTopbar ? " topbar-scrolled" : ""} ${
+          hideHeader && "d-none"
+        }`}>
         <div className="container d-flex justify-content-between">
           <div className="contact-info d-flex align-items-center">
             <i className="bi bi-envelope"></i> <Link href="mailto:admin@dialogika.co">admin@dialogika.co</Link>

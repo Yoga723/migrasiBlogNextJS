@@ -26,7 +26,7 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
 
   // Fungsi untuk menangani submit form
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // Cegah reload halaman
+    event.preventDefault();
     const formData = new FormData(event.currentTarget);
     // payload ini akan digunakan untuk menampung semua data dari FormArticle
     const payload: Partial<BlogArticleProps> = {};
@@ -48,7 +48,7 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
       .replace(/[^a-z0-9\s-]/g, "") // Hapus karakter seperti simbol (!,@,:,;) dari judul untuk dijadikan id atau urlnya
       .trim() // Hilangkan spasi di awal dan akhir
       .replace(/\s+/g, "-"); // Ganti spasi dengan tanda dash
-    payload.id = id; // Contoh hasil: /rahasia-membuat-pembukaan...
+    payload.idArticle = id; // Contoh hasil: /rahasia-membuat-pembukaan...
     payload.canonical = `https://www.dialogika.co/blog/${id}`; // COntoh hasil : dialogika.co/blog/rahasia-membuat-pembukaan...
 
     // Ambil metadata untuk blog
@@ -113,18 +113,16 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
     payload.content = content;
 
     try {
+      event.preventDefault();
       console.log("Submitting Article ...");
-      const res = await fetch(
-        "https://script.googleapis.com/v1/scripts/AKfycbwB78QHv7cJ-zAxFLo_Ru_WS72h_leAUmKIUlitrXI:run",
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-            // Authorization: "AIzaSyDvZ5bNx5qKazD3_rrpKwLxSnPpM77jF40",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+      const res = await fetch("/blog/api/admin/new-article", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          // Authorization: "AIzaSyDvZ5bNx5qKazD3_rrpKwLxSnPpM77jF40",
+        },
+        body: JSON.stringify(payload),
+      });
       if (!res.ok) throw new Error(`Failed to create article: ${res.statusText}`);
       const data = await res.json();
       console.log("Article created:", data);
@@ -139,8 +137,9 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
     <form
       id="FormArticle"
       onSubmit={handleFormSubmit}
-      className="w-100 d-flex flex-column mt-5 mt-md-0 p-3"
+      className="w-100 d-flex flex-column mt-5 mt-md-0 p-3 "
       style={{ height: "auto" }}>
+        {/* <input type="file" accept="jpeg, webp, png"/> */}
       {/* Input untuk judul blog */}
       <TextInput
         type="text"
