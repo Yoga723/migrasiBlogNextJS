@@ -15,12 +15,17 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (path.toString().includes("new-story")) setHideHeader(true);
+    // Hide header bila sedang buka halaman admin dan buat artikel blog baru
+    if (path && path.includes("/admin/new-story")) {
+      setHideHeader(true);
+    } else {
+      setHideHeader(false);
+    }
     // Initialize with current scroll position
     setShowTopbar(window.scrollY <= 100);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [path]);
 
   return (
     <>
