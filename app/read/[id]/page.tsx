@@ -162,7 +162,7 @@ export default async function Page({ params }: any) {
 
 // Dynamic page generation during build
 export async function generateStaticParams() {
-  const paths = generatePaths(blogArticleDummy, "id");
+  const paths = generatePaths(blogArticleDummy, "idArticle");
   console.log("Generated paths: ", paths);
-  return paths.filter((path) => !path.id.endsWith(".js.map"));
+  return paths.filter((path) => !path.idArticle.endsWith(".js.map"));
 }
