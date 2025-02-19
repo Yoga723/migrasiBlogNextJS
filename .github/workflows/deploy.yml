@@ -62,10 +62,6 @@ jobs:
           NEXT_PUBLIC_ESLINT_DISABLE: "true"
         run: ${{ steps.detect-package-manager.outputs.runner }} next build --no-lint
 
-      # Export the site statically
-      - name: Export static site
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
-
       # Upload the build artifact (the static output folder)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
