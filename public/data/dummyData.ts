@@ -2,7 +2,7 @@ import { BlogArticleProps } from "@/types";
 
 export const blogArticleDummy: BlogArticleProps[] = [
   {
-    id: "pentingnya-mempelajari-dosen-penguji-sebelum-sidang-skripsi-tips-persiapan-maksimal",
+    idArticle: "pentingnya-mempelajari-dosen-penguji-sebelum-sidang-skripsi-tips-persiapan-maksimal",
     title: "Pentingnya Mempelajari Dosen Penguji Sebelum Sidang Skripsi: Tips Persiapan Maksimal",
     thumbnail:
       "https://images.unsplash.com/photo-1515603403036-f3d35f75ca52?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -35,7 +35,7 @@ export const blogArticleDummy: BlogArticleProps[] = [
     outBoundLink: { title: "Medium", link: "https://medium.com/dialogika" },
   },
   {
-    id: "mengapa-pitching-sangat-penting-dalam-dunia-bisnis-ini-dia-alasannya",
+    idArticle: "mengapa-pitching-sangat-penting-dalam-dunia-bisnis-ini-dia-alasannya",
     title: "Mengapa Pitching Sangat Penting dalam Dunia Bisnis? Ini Dia Alasannya!",
     thumbnail: "https://i.pinimg.com/736x/0d/bd/66/0dbd66bf02b96a91e5f242eed49235bd.jpg",
     metaData: "Pelajari cara pitching karna sangat penting bila ingin terjun kedalam dunia bisnis",
@@ -64,7 +64,7 @@ export const blogArticleDummy: BlogArticleProps[] = [
     outBoundLink: { title: "Medium", link: "https://medium.com/dialogika" },
   },
   {
-    id: "mengapa-pitching-sangat-penting-dalam-dunia-bisnis-ini-dia-alasannya",
+    idArticle: "mengapa-pitching-sangat-penting-dalam-dunia-bisnis-ini-dia-alasannya",
     title: "Mengapa Pitching Sangat Penting dalam Dunia Bisnis? Ini Dia Alasannya!",
     thumbnail: "https://i.pinimg.com/736x/0d/bd/66/0dbd66bf02b96a91e5f242eed49235bd.jpg",
     metaData: "Pelajari cara pitching karna sangat penting bila ingin terjun kedalam dunia bisnis",
@@ -93,7 +93,7 @@ export const blogArticleDummy: BlogArticleProps[] = [
     outBoundLink: { title: "Medium", link: "https://medium.com/dialogika" },
   },
   {
-    id: "mengapa-pitching-sangat-penting-dalam-dunia-bisnis-ini-dia-alasannya",
+    idArticle: "mengapa-pitching-sangat-penting-dalam-dunia-bisnis-ini-dia-alasannya",
     title: "Mengapa Pitching Sangat Penting dalam Dunia Bisnis? Ini Dia Alasannya!",
     thumbnail: "https://i.pinimg.com/736x/0d/bd/66/0dbd66bf02b96a91e5f242eed49235bd.jpg",
     metaData: "Pelajari cara pitching karna sangat penting bila ingin terjun kedalam dunia bisnis",
