@@ -4,6 +4,7 @@ export const basePath = "/blog";
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
+  output: "export",
 
   // Sesuaikan basePath dengan nama dari repository di github. Jika reponya article, maka "/article"
   basePath: "/blog",
