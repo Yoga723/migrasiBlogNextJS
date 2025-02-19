@@ -11,8 +11,8 @@ import Link from "next/link";
 import { formatDate } from "@/components/utils/date";
 
 export default async function Page({ params }: any) {
-  const { id } = await params;
-  const blogArticle = blogArticleDummy.find((item: BlogArticleProps) => item.idArticle.toString() === id);
+  const { idArticle } = await params;
+  const blogArticle = blogArticleDummy.find((item: BlogArticleProps) => item.idArticle.toString() === idArticle);
 
   const categoriesList = ["Confidence", "Interview", "Productivity", "Introvert", "Communication", "Presentation"];
 
@@ -162,7 +162,6 @@ export default async function Page({ params }: any) {
 
 // Dynamic page generation during build
 export async function generateStaticParams() {
-  const paths = generatePaths(blogArticleDummy, "id");
-  console.log("Generated paths: ", paths);
-  return paths.filter((path) => !path.idArticle.endsWith(".js.map"));
+  const paths = generatePaths(blogArticleDummy, "idArticle");
+  return paths;
 }

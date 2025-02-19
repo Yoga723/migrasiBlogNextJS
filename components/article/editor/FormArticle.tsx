@@ -6,7 +6,7 @@ import { BlogArticleProps, BlogAuthorProps } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAuthorsState } from "@/app/store/authorsSlice";
 import { RootState } from "@/app/store";
-import JoditRichEditor from "./JoditRichEditor";
+import dynamic from "next/dynamic";
 
 // Import RichEditor secara dinamis (hanya di-render di client)
 // const RichEditor = dynamic(() => import("./RichEditor"), { ssr: false });
@@ -14,6 +14,8 @@ import JoditRichEditor from "./JoditRichEditor";
 interface FormArticleProps {
   authors: BlogAuthorProps[];
 }
+
+const JoditRichEditor = dynamic(() => import('./JoditRichEditor'), { ssr: false });
 
 const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
   const availableAuthors = useSelector((state: RootState) => state.authors.authorsDetail);
@@ -252,9 +254,6 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
         />
       </div>
       <JoditRichEditor />
-
-      {/* Rich text editor untuk konten artikel */}
-      {/* <RichEditor /> */}
 
       <button
         type="submit"
