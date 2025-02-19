@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import { generatePaths } from "@/lib/generateStaticPaths";
+import { generatePaths } from "@/lib/generatePaths";
 import { blogArticleDummy } from "@/public/data/dummyData";
 import { BlogArticleProps } from "@/types";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
