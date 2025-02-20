@@ -113,7 +113,7 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
     try {
       event.preventDefault();
       console.log("Submitting Article ...");
-      const res = await fetch("https://blog-ruddy-sigma-75.vercel.app/blog/api/admin/article", {
+      const res = await fetch("https://blog-ruddy-sigma-75.vercel.app/blog/api/admin/article/", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
