@@ -8,6 +8,7 @@ const JoditRichEditor = () => {
   const config = useMemo(
     () => ({
       placeholder: "Mulai mengetik...",
+      toolbarAdaptive: false,
     }),
     []
   );

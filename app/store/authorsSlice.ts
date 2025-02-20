@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import authorImgPlaceholder from "@/public/assets/img/gallery/author.webp";
 
 // Slice untuk menyimpan data author
 const authorsDetailSlice = createSlice({
@@ -8,7 +9,7 @@ const authorsDetailSlice = createSlice({
     authorsDetail: [
       {
         authorName: "Author Placeholder",
-        imgPath: "https://www.dialogika.co/blog/public/assets/img/gallery/author.webp",
+        imgPath: authorImgPlaceholder.toString() || undefined,
         quotes: "Please choose another author OR refresh page",
       },
     ],

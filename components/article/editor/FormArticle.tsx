@@ -1,4 +1,3 @@
-// app/components/FormArticle.tsx
 "use client";
 import React, { useEffect } from "react";
 import { TextInput, DynamicInput, DynamicAuthorInput, LabelInput } from "@/components/forms";
