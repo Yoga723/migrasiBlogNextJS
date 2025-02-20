@@ -114,11 +114,10 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
     try {
       event.preventDefault();
       console.log("Submitting Article ...");
-      const res = await fetch("/blog/api/admin/new-article", {
+      const res = await fetch("/blog/api/admin/article", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
-          // Authorization: "AIzaSyDvZ5bNx5qKazD3_rrpKwLxSnPpM77jF40",
         },
         body: JSON.stringify(payload),
       });

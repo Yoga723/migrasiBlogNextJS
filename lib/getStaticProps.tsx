@@ -1,22 +1,31 @@
-import Authors from "./mongodb/models/Authors";
-import dbConnect from "./mongodb/mongodb";
-
 /**
  * Mengambil data author dari MongoDB secara statis.
  * Menggunakan getStaticProps untuk mendukung ISR (Incremental Static Regeneration).
  */
-export async function getStaticProps() {
-  // Hubungkan ke MongoDB
-  await dbConnect();
-  // Ambil data author dan gunakan .lean() untuk mengubah ke plain JS object
-  const authors = await Authors.find().lean();
-  
-  return {
-    props: {
-      // Konversi object ke JSON untuk menghindari error serialisasi
-      authors: JSON.parse(JSON.stringify(authors)),
-    },
-    // Mengaktifkan ISR dengan revalidate setiap 60 detik
-    revalidate: 60,
-  };
+// lib/getStaticProps.ts
+export async function getStaticAuthorsProps() {
+  try {
+    // Call the API endpoint hosted on Vercel using its absolute URL
+    const res = await fetch("https://blog-ruddy-sigma-75.vercel.app/blog/api/admin/authors");
+    if (!res.ok) {
+      throw new Error(`Failed to fetch authors: ${res.statusText}`);
+    }
+    const authors = await res.json();
+
+    return {
+      props: {
+        authors, // this is the array of authors
+      },
+      revalidate: 60, // Enable ISR to revalidate every 60 seconds
+    };
+  } catch (error) {
+    console.error("Error in getStaticAuthorsProps:", error);
+    // Optionally, you could return fallback props or rethrow the error
+    return {
+      props: {
+        authors: [],
+      },
+      revalidate: 60,
+    };
+  }
 }

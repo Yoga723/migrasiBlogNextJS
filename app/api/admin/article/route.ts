@@ -3,6 +3,8 @@ import dbConnect from "@/lib/mongodb/mongodb";
 import { BlogArticleProps } from "@/types";
 import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
+
+// Function untuk mengirim artikel blog baru ke database
 export const POST = async (request: Request) => {
   try {
     await dbConnect();
@@ -10,6 +12,7 @@ export const POST = async (request: Request) => {
 
     const payload: Partial<BlogArticleProps> = await request.json();
 
+    // Update artikel blog bila artikel dengan idArticle sudah ada, bila tidak ada maka buat baru
     const result = await Article.updateOne({ idArticle: payload.idArticle }, { $set: payload }, { upsert: true });
 
     console.log("Data sent to mongoDB");

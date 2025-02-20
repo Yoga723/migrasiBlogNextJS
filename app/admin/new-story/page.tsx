@@ -2,14 +2,14 @@ import FormArticle from "@/components/article/editor/FormArticle";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import React from "react";
 import "./style.css";
-import { getStaticProps } from "@/lib/getStaticProps";
+import { getStaticAuthorsProps } from "@/lib/getStaticProps";
 import { BlogAuthorProps } from "@/types";
 import ErrorPage from "@/components/layout/ErrorPage";
 
 const page = async () => {
   let authors: BlogAuthorProps[] = [];
   try {
-    const { props } = await getStaticProps();
+    const { props } = await getStaticAuthorsProps();
     authors = props.authors;
   } catch (error) {
     console.error("Error fetching authors:", error);

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: `${basePath}/assets/img/favicon.webp`,
-    apple: `/${basePath}assets/img/apple-touch-icon.webp`,
+    apple: `${basePath}/assets/img/apple-touch-icon.webp`,
   },
 };
 
