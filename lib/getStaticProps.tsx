@@ -1,5 +1,5 @@
 /**
- * Mengambil data author dari MongoDB secara statis.
+ * Mengambil data author dari MongoDB. Untuk link urlnya menggunakan vercel dialogika.
  * Menggunakan getStaticProps untuk mendukung ISR (Incremental Static Regeneration).
  */
 // lib/getStaticProps.ts

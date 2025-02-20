@@ -1,10 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-// Sub-schemas untuk array
-// const ImageSchema = new Schema({
-//   name: { type: String, required: true },
-//   src: { type: String, required: true },
-// });
+
 
 const AuthorSchema = new Schema({
   authorName: { type: String, required: true },
@@ -16,24 +12,6 @@ const OutBoundLinkSchema = new Schema({
   title: { type: String, default: "Medium Dialogika" },
   link: { type: String, default: "https://medium.com/dialogika" },
 });
-
-// const ArticleQuoteSchema = new Schema({
-//   figure: { type: String, required: true },
-//   quote: { type: String, required: true },
-// });
-
-// Delta content schema (for Quill.js)
-// const DeltaSchema = new Schema(
-//   {
-//     ops: [
-//       {
-//         type: Schema.Types.Mixed,
-//         required: true,
-//       },
-//     ],
-//   },
-//   { _id: false }
-// );
 
 // Skema article untuk database di mongoDB
 const articleSchema = new Schema(

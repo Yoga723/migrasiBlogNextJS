@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import authorImgPlaceholder from "@/public/assets/img/gallery/author.webp";
 
 // Slice untuk menyimpan data author
 const authorsDetailSlice = createSlice({
@@ -9,7 +8,7 @@ const authorsDetailSlice = createSlice({
     authorsDetail: [
       {
         authorName: "Author Placeholder",
-        imgPath: authorImgPlaceholder.toString(),
+        imgPath: "https://www.poultryworld.net/app/uploads/2021/03/John-Doe-10-1536x1536.jpg",
         quotes: "Please choose another author OR refresh page",
       },
     ],

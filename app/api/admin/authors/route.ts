@@ -6,6 +6,7 @@ import { NextResponse } from "next/server";
 export const GET = async () => {
   try {
     await dbConnect();
+    // Mengambil seluruh data author dari database di mongoDB
     const authors = await Authors.find({}).lean();
 
     return NextResponse.json(authors, { status: 200 });
