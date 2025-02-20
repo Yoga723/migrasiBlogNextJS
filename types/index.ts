@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export interface BlogArticleProps {
   idArticle: string;
   title: string;
@@ -10,7 +12,7 @@ export interface BlogArticleProps {
   content: string;
   authors: Array<{
     authorName: string;
-    imgPath: string;
+    imgPath: string | StaticImageData;
     quotes?: string | "No quotes from me 🤪";
   }>;
   writerNote: string;
@@ -25,6 +27,6 @@ export interface BlogArticleProps {
 
 export interface BlogAuthorProps {
   authorName: string;
-  imgPath: string;
+  imgPath: string | StaticImageData;
   quotes?: string | "No quotes from me 🤪";
 }
