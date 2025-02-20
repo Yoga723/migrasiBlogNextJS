@@ -48,6 +48,10 @@ jobs:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
+      # Set environment variable for static export
+      - name: Set NEXT_EXPORT environment variable
+        run: echo "NEXT_EXPORT=true" >> $GITHUB_ENV
+
       # Remove the API folder so that it doesn't get included in the static export
       - name: Remove API folder for static export
         run: rm -rf app/api
