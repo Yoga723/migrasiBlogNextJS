@@ -6,7 +6,7 @@
 export async function getStaticAuthorsProps() {
   try {
     // Call the API endpoint hosted on Vercel using its absolute URL
-    const res = await fetch("https://blog-em2ntmiwr-yoga723s-projects.vercel.app/blog/api/admin/authors/");
+    const res = await fetch("https://blog-ulby1hc3c-yoga723s-projects.vercel.app/blog/api/admin/authors/");
     if (!res.ok) {
       throw new Error(`Failed to fetch authors: ${res.statusText}`);
     }
