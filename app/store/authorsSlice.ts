@@ -9,7 +9,7 @@ const authorsDetailSlice = createSlice({
     authorsDetail: [
       {
         authorName: "Author Placeholder",
-        imgPath: authorImgPlaceholder.toString() || undefined,
+        imgPath: authorImgPlaceholder.toString(),
         quotes: "Please choose another author OR refresh page",
       },
     ],
