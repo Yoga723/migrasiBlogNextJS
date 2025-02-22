@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     apple: `${basePath}/assets/img/apple-touch-icon.webp`,
   },
 };
-
-export default async function Page({ params }: { params: { idArticle: string } }) {
-  const { idArticle } = params;
+type tParams = Promise<{ idArticle: string[] }>;
+export default async function Page(props: { params: tParams }) {
+  const { idArticle } = await props.params;
 
   try {
     console.log("Fetching Article ...");
