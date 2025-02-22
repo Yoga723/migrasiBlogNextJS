@@ -42,7 +42,7 @@ const JoditRichEditor = () => {
         tabIndex={1} // Manage focus
         onBlur={(newContent) => {
           setEditorValue(newContent);
-          localStorage.setItem("joditEditorContent", newContent);
+          if (getLocalContent) localStorage.setItem("joditEditorContent", newContent);
         }} // Update content onBlur
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         onChange={(newContent) => {}} // Nanti coba buat countdown 3 detik dan bila sudah 3 detik akan save ke draft di redux
