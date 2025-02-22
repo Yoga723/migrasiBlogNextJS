@@ -36,12 +36,12 @@ const ArticleDetails = ({ authors, publishedAt, writerNote }: BlogArticleProps) 
                 <form
                   className="rate"
                   id="rate-us"
-                  // onClick={()=>HeroForm()}
-                >
+                  onClick={() => {}}>
                   <input
                     type="radio"
                     id="star5"
                     name="Rating"
+                    readOnly
                     value="5"
                   />
                   <label
@@ -50,6 +50,7 @@ const ArticleDetails = ({ authors, publishedAt, writerNote }: BlogArticleProps) 
                     5 stars
                   </label>
                   <input
+                    readOnly
                     type="radio"
                     id="star4"
                     name="Rating"
@@ -61,6 +62,7 @@ const ArticleDetails = ({ authors, publishedAt, writerNote }: BlogArticleProps) 
                     4 stars
                   </label>
                   <input
+                    readOnly
                     type="radio"
                     id="star3"
                     name="Rating"
@@ -72,6 +74,7 @@ const ArticleDetails = ({ authors, publishedAt, writerNote }: BlogArticleProps) 
                     3 stars
                   </label>
                   <input
+                    readOnly
                     type="radio"
                     id="star2"
                     name="Rating"
@@ -83,6 +86,7 @@ const ArticleDetails = ({ authors, publishedAt, writerNote }: BlogArticleProps) 
                     2 stars
                   </label>
                   <input
+                    readOnly
                     type="radio"
                     id="star1"
                     name="Rating"
@@ -94,6 +98,7 @@ const ArticleDetails = ({ authors, publishedAt, writerNote }: BlogArticleProps) 
                     1 star
                   </label>
                   <input
+                    readOnly
                     name="Keyword"
                     className="d-none"
                     value="Pentingnya Mempelajari Dosen Penguji Sebelum Sidang Skripsi"

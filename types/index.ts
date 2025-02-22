@@ -1,4 +1,5 @@
 export interface BlogArticleProps {
+  _id?: string; // Ini generate otomatis dari mongoDBnya
   idArticle: string;
   title: string;
   thumbnail: string;

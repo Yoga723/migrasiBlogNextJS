@@ -1,4 +1,4 @@
-// components/FooterModal.jsx
+"use client";
 import React from "react";
 import HeaderImage from "@/public/assets/img/footer-header-2.webp";
 import "./style.css";
@@ -25,7 +25,7 @@ const FooterModal = () => {
           </div>
         </div>
         <div className="modal-body w-100 h-auto">
-          <form>
+          <form onSubmit={() => {}}>
             {/* Modal form fields */}
             <div className="mb-3 input-sub-footer-wrapper">
               <label
@@ -91,6 +91,7 @@ const FooterModal = () => {
           <button
             style={{ borderRadius: "10px" }}
             className="blue-dialogika-btn"
+            type="submit"
             id="subFooterBtn">
             Kirim & Gabung group
           </button>

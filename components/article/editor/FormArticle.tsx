@@ -5,9 +5,7 @@ import { BlogArticleProps, BlogAuthorProps } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAuthorsState } from "@/app/store/authorsSlice";
 import { RootState } from "@/app/store";
-import dynamic from "next/dynamic";
-// Import RichEditor secara dinamis (hanya di-render di client)
-const JoditRichEditor = dynamic(() => import("./JoditRichEditor"), { ssr: false });
+import JoditRichEditor from "./JoditRichEditor";
 
 interface FormArticleProps {
   authors: BlogAuthorProps[];

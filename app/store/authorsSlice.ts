@@ -17,7 +17,6 @@ const authorsDetailSlice = createSlice({
     // Reducer untuk meng-update data author
     updateAuthorsState: (state, action) => {
       state.authorsDetail = action.payload;
-      console.log("ini log setelah action dilakukan :", state.authorsDetail);
     },
   },
 });

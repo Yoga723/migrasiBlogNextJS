@@ -23,6 +23,7 @@
     "glightbox": "^3.3.1",
     "highlight.js": "^11.11.1",
     "jodit-pro-react": "^5.2.22",
+    "jodit-react": "^5.2.15",
     "jquery": "^3.7.1",
     "mongodb": "^6.13.0",
     "mongoose": "^8.10.0",

@@ -79,9 +79,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main className="main mb-4">{children}</main>
           <Footer />
-
-          {/* Global Scripts */}
         </ReduxProvider>
+        {/* Global Scripts */}
         <GlobalScripts />
         <BootstrapJS />
       </body>
