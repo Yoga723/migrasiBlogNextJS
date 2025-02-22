@@ -213,13 +213,19 @@ export default async function Page(props: { params: tParams }) {
 
 // Dynamic page generation during build
 export async function generateStaticParams() {
-  const res = await fetch("https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/");
-  if (!res.ok) {
-    throw new Error("Failed to fetch article IDs for static generation");
+  try {
+    const res = await fetch("https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/");
+    if (!res.ok) {
+      throw new Error("Failed to fetch article IDs for static generation");
+    }
+    const articles = await res.json();
+    return articles.map((article: any) => ({
+      idArticle: article.idArticle.toString(),
+    }));
+  } catch (error) {
+    console.error("Error fetching article IDs:", error);
+    // Fallback: if you have a known set of IDs or simply return an empty list:
+    return [];
   }
-  const articles = await res.json();
-
-  return articles.map((article: any) => ({
-    idArticle: article.idArticle.toString(),
-  }));
 }
+
