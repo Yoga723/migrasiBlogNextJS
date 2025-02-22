@@ -16,7 +16,9 @@ interface DynamicAuthorInputProps {
 }
 
 const DynamicAuthorInput = (props: DynamicAuthorInputProps) => {
-  const authors = useSelector((state: RootState) => state.authors.authorsDetail);
+  const authors = useSelector((state: RootState) => state.authors.authorsDetail)
+    .slice()
+    .sort((a, b) => a.authorName.localeCompare(b.authorName));
   const [totalInputs, setTotalInputs] = useState([""]);
   const [values, setValues] = useState<string[]>([authors[0].authorName]);
 
