@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page({ params }: { params: { idArticle: string } }) {
-  const { idArticle } = await params;
+  const { idArticle } = params;
 
   try {
     console.log("Fetching Article ...");
