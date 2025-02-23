@@ -10,13 +10,9 @@ import Link from "next/link";
 import { formatDate } from "@/components/utils/date";
 import { Metadata } from "next";
 
-interface PageProps {
-  params: {
-    idArticle: string;
-  };
-}
-export default async function Page({ params }: PageProps) {
-  const { idArticle } = params;
+type pageParams = Promise<{ idArticle: string[] }>;
+export default async function Page(props: { params: pageParams }) {
+  const { idArticle } = await props.params;
   const categoriesList = ["Confidence", "Interview", "Productivity", "Introvert", "Communication", "Presentation"];
 
   try {
@@ -222,8 +218,8 @@ export async function generateStaticParams() {
 }
 
 // Generate dynamic metadata for each article page.
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { idArticle } = params;
+export async function generateMetadata(props: { params: pageParams }): Promise<Metadata> {
+  const { idArticle } = await props.params;
   try {
     const response = await fetch(
       `https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/generateMetaData/?idArticle=${idArticle}`,
