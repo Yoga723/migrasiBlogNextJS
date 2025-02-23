@@ -8,6 +8,7 @@ import star from "@/public/assets/img/next.png";
 import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/components/utils/date";
+import { Metadata } from "next";
 
 type pageParams = Promise<{ idArticle: string[] }>;
 export default async function Page(props: { params: pageParams }) {
@@ -77,7 +78,7 @@ export default async function Page(props: { params: pageParams }) {
                     className="post-img position-relative m-0"
                     style={{ borderRadius: 10 }}>
                     <Image
-                      src="https://res.cloudinary.com/daqshfnz3/image/upload/f_auto,q_auto/v1/blog-thumbnails/tnuix6ooprffu2v187ur"
+                      src={article.thumbnail}
                       alt="Kesalahan Komunikasi"
                       className="img-fluid"
                       width={800}
@@ -217,20 +218,27 @@ export async function generateStaticParams() {
 }
 
 // This function generates metadata for each article page dynamically.
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: { idArticle: string } }): Promise<Metadata> {
+  const { idArticle } = await params;
   try {
     const response = await fetch(
-      "https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/generateMetaData/",
+      `https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/generateMetaData/?idArticle=${idArticle}`,
       { method: "GET" }
     );
     if (!response) {
       return {
         title: "Article Not Found",
-        description: `No article found with said idArticle`,
+        description: `No article found with id : ${idArticle}`,
       };
     }
     const result = await response.json();
     const article: BlogArticleProps = result.data;
+    if (!article) {
+      return {
+        title: "Article Not Found",
+        description: `No article found with id ${idArticle}`,
+      };
+    }
     return {
       title: article.title,
       description: article.cardsDescription || "Read our latest article on Dialogika Blog.",

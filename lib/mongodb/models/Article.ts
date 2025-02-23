@@ -59,17 +59,17 @@ const articleSchema = new Schema(
   },
   {
     timestamps: true,
-    collection: "articleBlog",
+    collection: "articleCollection",
   }
 );
 
 // If id is not provided, generate a new one
-articleSchema.pre("save", function (next) {
-  if (!this.idArticle) {
-    this.idArticle = this._id.toString();
-  }
-  next();
-});
+// articleSchema.pre("save", function (next) {
+//   if (!this.idArticle) {
+//     this.idArticle = this._id.toString();
+//   }
+//   next();
+// });
 
 const Article = mongoose.models.Article || mongoose.model("Article", articleSchema);
 export default Article;

@@ -16,7 +16,7 @@ export interface InputProps {
   required?: boolean;
 }
 
-const TextInputComponent: React.FC<InputProps> = ({
+const TextInput: React.FC<InputProps> = ({
   name,
   type = "text",
   placeholder,
@@ -47,4 +47,4 @@ const TextInputComponent: React.FC<InputProps> = ({
   );
 };
 
-export default TextInputComponent;
+export default TextInput;

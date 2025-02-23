@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateAuthorsState } from "@/app/store/authorsSlice";
 import { RootState } from "@/app/store";
 import JoditRichEditor from "./JoditRichEditor";
+import ImageUrl from "@/components/forms/ImageUrl";
 
 interface FormArticleProps {
   authors: BlogAuthorProps[];
@@ -32,7 +33,7 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
 
     // Thumbnail belum di SET
     payload.thumbnail =
-      "https://images.pexels.com/photos/713149/pexels-photo-713149.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+      "https://res.cloudinary.com/daqshfnz3/image/upload/f_auto,q_auto/v1/blog-thumbnails/tnuix6ooprffu2v187ur";
 
     // Ambil judul blog dan buat id dari judul tersebut
     const title = formData.get("title")?.toString();
@@ -42,8 +43,8 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
     const id = title
       .toLowerCase() // Ubah ke huruf kecil
       .replace(/[^a-z0-9\s-]/g, "") // Hapus karakter seperti simbol (!,@,:,;) dari judul untuk dijadikan id atau urlnya
-      .trim() // Hilangkan spasi di awal dan akhir
-      .replace(/\s+/g, "-"); // Ganti spasi dengan tanda dash
+      .trim()
+      .replace(/\s+/g, "-"); // Ganti spasi/white space dengan tanda dash (-)
     payload.idArticle = id; // Contoh hasil: /rahasia-membuat-pembukaan...
     payload.canonical = `https://www.dialogika.co/blog/${id}`; // COntoh hasil : dialogika.co/blog/rahasia-membuat-pembukaan...
 
@@ -68,11 +69,14 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
     payload.writerNote = writernote;
 
     // Ambil outbound title untuk blog
-    const outboundTitle = formData.get("outboundTitle")?.toString();
-    const outboundLink = formData.get("outboundLink")?.toString();
-    if (outboundTitle && outboundLink && payload.outBoundLink) {
-      payload.outBoundLink.title = outboundTitle || "Medium";
-      payload.outBoundLink.link = outboundLink || "https://medium.com/dialogika";
+    const externalTitle = formData.get("externalTitle")?.toString();
+    const externalLink = formData.get("externalLink")?.toString();
+
+    if (externalTitle && externalLink) {
+      payload.outBoundLink = {
+        title: externalTitle || "Medium",
+        link: externalLink || "https://medium.com/dialogika",
+      };
     }
 
     // Ambil nilai input untuk tags (tags-0, tags-1, ..., tags-9)
@@ -134,7 +138,7 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
       onSubmit={handleFormSubmit}
       className="w-100 d-flex flex-column mt-5 mt-md-0 p-3 "
       style={{ height: "auto" }}>
-      {/* <input type="file" accept="jpeg, webp, png"/> */}
+      <ImageUrl inputPlaceholder={"Gunakan gambar Landscape"} />
       {/* Input untuk judul blog */}
       <TextInput
         type="text"
@@ -186,10 +190,11 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
         divClassName="mt-4"
         inputClassName="text-input fs-6 w-100"
       />
+      {/* Input untuk outbound link */}
       <div className="d-inline-flex flex-row gap-4 my-4 overflow-hidden">
         <TextInput
           type="text"
-          name="outboundTitle"
+          name="externalTitle"
           labelTitle="Outbound Title"
           description="Link yang mengarah ke blog se-topik yang diluar dari dialogika. Misal blog dari medium"
           placeholder="Stoicism: Kunci Kebijaksanaan dan Hidup Tenang"
@@ -198,7 +203,7 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
         />
         <TextInput
           type="text"
-          name="outboundLink"
+          name="externalLink"
           labelTitle="Outbound Link"
           placeholder="https://medium.com/dialogika"
           divClassName="col-5 col-md-6"

@@ -873,11 +873,6 @@ a:visited:not([class*=Mui]):not([class*=call-to-action]):not([class=href]) {
   height:100%;
   text-align:left
 }
-.section {
-  background-color:#fff;
-  color:#292c33;
-  position:relative
-}
 .button-link {
   text-decoration:none
 }
@@ -887,22 +882,6 @@ a:visited:not([class*=Mui]):not([class*=call-to-action]):not([class=href]) {
 @media (max-width:1100px) {
   .demo {
     padding:16px
-  }
-}
-@media (min-width:1024px) {
-  .section {
-    margin:0 auto;
-    max-width:1024px
-  }
-}
-@media (min-width:1280px) {
-  .section {
-    max-width:976px
-  }
-}
-@media (min-width:1600px) {
-  .section {
-    max-width:1280px
   }
 }
 .jodit-ui-ai-assistant__results {
@@ -1804,80 +1783,6 @@ a.uk-link {
 }
 .fill-white {
   fill:#fff
-}
-.section-social {
-  background:#536dfe;
-  color:#fff;
-  font-weight:400;
-  padding:20px 0;
-  text-align:center
-}
-@media (min-width:576px) {
-  .section-social {
-    padding:25px 0
-  }
-}
-@media (min-width:768px) {
-  .section-social {
-    padding:25px
-  }
-}
-@media (min-width:1000px) {
-  .section-social {
-    padding:25px 50px
-  }
-}
-@media (min-width:768px) {
-  .section-social .icons-wrapper {
-    position:absolute;
-    right:20px
-  }
-}
-.section-social .social-media-href {
-  align-items:center;
-  color:#fff;
-  cursor:pointer;
-  display:flex;
-  font-size:28px;
-  justify-content:center;
-  padding:0 10px
-}
-@media (max-width:767.99px) {
-  .section-social .social-media-href {
-    margin-top:10px
-  }
-}
-@media (min-width:768px) {
-  .section-social .social-media-href {
-    font-size:32px;
-    padding:0 20px
-  }
-}
-.section-social .social-media-href:hover {
-  color:#f1f1f1
-}
-.section-social .social-media-href:hover path {
-  fill:#f1f1f1
-}
-.section-social .social-svg {
-  height:26px;
-  width:26px
-}
-@media (min-width:768px) {
-  .section-social .social-svg {
-    height:34px;
-    width:34px
-  }
-}
-.section-social .social-github-svg {
-  height:22px;
-  width:22px
-}
-@media (min-width:768px) {
-  .section-social .social-github-svg {
-    height:30px;
-    width:30px
-  }
 }
 .section-down-footer {
   background-color:#000;
