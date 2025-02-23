@@ -219,7 +219,7 @@ export async function generateStaticParams() {
 
 // This function generates metadata for each article page dynamically.
 export async function generateMetadata({ params }: { params: { idArticle: string } }): Promise<Metadata> {
-  const { idArticle } = await params;
+  const { idArticle } = params;
   try {
     const response = await fetch(
       `https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/generateMetaData/?idArticle=${idArticle}`,
