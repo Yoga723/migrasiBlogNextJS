@@ -219,13 +219,17 @@ export async function generateStaticParams() {
       throw new Error("Failed to fetch article IDs for static generation");
     }
     const articles = await res.json();
+    if (!articles || articles.length === 0) {
+      throw new Error("No article IDs found for static generation");
+    }
     return articles.map((article: any) => ({
       idArticle: article.idArticle.toString(),
     }));
   } catch (error) {
     console.error("Error fetching article IDs:", error);
-    // Fallback: if you have a known set of IDs or simply return an empty list:
-    return [];
+    // You can either throw an error to stop the build, or provide a default fallback list:
+    return [
+      { idArticle: "default-article-id" }, // Replace with a known fallback ID if appropriate
+    ];
   }
 }
-
