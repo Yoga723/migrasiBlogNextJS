@@ -10,9 +10,13 @@ import Link from "next/link";
 import { formatDate } from "@/components/utils/date";
 import { Metadata } from "next";
 
-type pageParams = Promise<{ idArticle: string[] }>;
-export default async function Page(props: { params: pageParams }) {
-  const { idArticle } = await props.params;
+interface PageProps {
+  params: {
+    idArticle: string;
+  };
+}
+export default async function Page({ params }: PageProps) {
+  const { idArticle } = params;
   const categoriesList = ["Confidence", "Interview", "Productivity", "Introvert", "Communication", "Presentation"];
 
   try {
@@ -217,4 +221,63 @@ export async function generateStaticParams() {
   }
 }
 
-// This function generates metadata for each article page dynamically.
+// Generate dynamic metadata for each article page.
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { idArticle } = params;
+  try {
+    const response = await fetch(
+      `https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/generateMetaData/?idArticle=${idArticle}`,
+      { method: "GET" }
+    );
+    if (!response.ok) {
+      return {
+        title: "Article Not Found",
+        description: `No article found with id: ${idArticle}`,
+      };
+    }
+    const result = await response.json();
+    const article: BlogArticleProps = result.data;
+    if (!article) {
+      return {
+        title: "Article Not Found",
+        description: `No article found with id: ${idArticle}`,
+      };
+    }
+    return {
+      title: article.title,
+      description: article.cardsDescription || "Read our latest article on Dialogika Blog.",
+      keywords: article.keywords || "Public Speaking, Dialogika, Berbicara Didepan Umum",
+      authors: [{ name: article.authors?.[0]?.authorName || "Dialogika Team" }],
+      openGraph: {
+        title: article.title,
+        description: article.cardsDescription || "Read our latest article on Dialogika Blog.",
+        url: article.canonical || `https://www.dialogika.co/blog/${article.idArticle}`,
+        siteName: "Dialogika | Kelas Public Speaking",
+        images: [
+          {
+            url: article.thumbnail || "https://www.dialogika.co/assets/img/logo.webp",
+            alt: article.title,
+          },
+        ],
+        type: "article",
+      },
+      twitter: {
+        card: "summary_large_image",
+        site: "@dialogika_co",
+        title: article.title,
+        description: article.cardsDescription || "Read our latest article on Dialogika Blog.",
+        images: [article.thumbnail || "https://www.dialogika.co/assets/img/logo.webp"],
+      },
+      icons: {
+        icon: `/assets/img/favicon.webp`,
+        apple: `/assets/img/apple-touch-icon.webp`,
+      },
+    };
+  } catch (error: any) {
+    console.error("Error generating metadata:", error);
+    return {
+      title: "Error",
+      description: "Error fetching article metadata.",
+    };
+  }
+}
