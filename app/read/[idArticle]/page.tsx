@@ -8,8 +8,6 @@ import star from "@/public/assets/img/next.png";
 import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/components/utils/date";
-import { Metadata } from "next";
-import { basePath } from "@/next.config";
 
 type pageParams = Promise<{ idArticle: string[] }>;
 export default async function Page(props: { params: pageParams }) {
@@ -219,8 +217,7 @@ export async function generateStaticParams() {
 }
 
 // This function generates metadata for each article page dynamically.
-export async function generateMetadata({ params }: { params: { idArticle: string } }): Promise<Metadata> {
-  const { idArticle } = params;
+export async function generateMetadata() {
   try {
     const response = await fetch(
       "https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/generateMetaData/",
@@ -229,7 +226,7 @@ export async function generateMetadata({ params }: { params: { idArticle: string
     if (!response) {
       return {
         title: "Article Not Found",
-        description: `No article found with id ${idArticle}`,
+        description: `No article found with said idArticle`,
       };
     }
     const result = await response.json();
