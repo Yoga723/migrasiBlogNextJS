@@ -1,49 +1,20 @@
 import React from "react";
 import "./style.css";
-import { generatePaths } from "@/lib/generatePaths";
 import { BlogArticleProps } from "@/types";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import { Social, ProgramOffer, Widget } from "@/components/sidebars";
 import ArticleDetails from "@/components/article/ArticleDetails";
+import star from "@/public/assets/img/next.png";
 import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/components/utils/date";
 import { Metadata } from "next";
 import { basePath } from "@/next.config";
 
-// Global metadata
-export const metadata: Metadata = {
-  title: "Cara menggunakan .... - Kursus Public Speaking",
-  description:
-    "Dialogika Blog: Learn tips and best practices from our Dialogika mentor and team on topics from Mental Health & Social Science and Mindset to Public Speaking.",
-  keywords: "Blog Dialogika, Blog, blog, dialogika",
-  authors: [{ name: "Dialogika Team" }],
-  robots: "index, follow",
-  openGraph: {
-    title: "Dialogika Blog - Kursus Public Speaking",
-    description:
-      "Dialogika Blog: Learn tips and best practices from our Dialogika mentor and team on topics from Mental Health & Social Science and Mindset to Public Speaking.",
-    url: "https://www.dialogika.co/blog/",
-    siteName: "Dialogika | Kelas Public Speaking",
-    images: [{ url: "https://www.dialogika.co/assets/img/logo.webp" }],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@dialogika_co",
-    title: "Dialogika Blog - Kursus Public Speaking",
-    description:
-      "Dialogika Blog: Learn tips and best practices from our Dialogika mentor and team on topics from Mental Health & Social Science and Mindset to Public Speaking.",
-    images: ["https://www.dialogika.co/assets/img/logo.webp"],
-  },
-  icons: {
-    icon: `${basePath}/assets/img/favicon.webp`,
-    apple: `${basePath}/assets/img/apple-touch-icon.webp`,
-  },
-};
-type tParams = Promise<{ idArticle: string[] }>;
-export default async function Page(props: { params: tParams }) {
+type pageParams = Promise<{ idArticle: string[] }>;
+export default async function Page(props: { params: pageParams }) {
   const { idArticle } = await props.params;
+  const categoriesList = ["Confidence", "Interview", "Productivity", "Introvert", "Communication", "Presentation"];
 
   try {
     console.log("Fetching Article ...");
@@ -73,9 +44,9 @@ export default async function Page(props: { params: tParams }) {
         </>
       );
     }
+    // Respon dari server ke mongoDB adalah artikel blog/document yang tinggal digunakan
     const response = await res.json();
-    const article: BlogArticleProps = response.data; // Respon dari server ke mongoDB adalah artikel blog/document yang tinggal digunakan
-    const categoriesList = ["Confidence", "Interview", "Productivity", "Introvert", "Communication", "Presentation"];
+    const article: BlogArticleProps = response.data;
 
     // Tampilkan bagian dibawah ini jika blogArticle ada
     return (
@@ -203,6 +174,17 @@ export default async function Page(props: { params: tParams }) {
               </aside>
             </div>
           </div>
+
+          <a
+            href="#tagging-up"
+            className="back-to-top d-flex align-items-center justify-content-center active">
+            <Image
+              src={`${star}`}
+              width={10}
+              height={10}
+              alt=""
+            />
+          </a>
         </section>
       </>
     );
@@ -211,10 +193,12 @@ export default async function Page(props: { params: tParams }) {
   }
 }
 
-// Dynamic page generation during build
+// Automatically generate halaman html saat proses build di github pages
 export async function generateStaticParams() {
   try {
-    const res = await fetch("https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/");
+    const res = await fetch(
+      "https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/generateStaticParams/"
+    );
     if (!res.ok) {
       throw new Error("Failed to fetch article IDs for static generation");
     }
@@ -231,5 +215,60 @@ export async function generateStaticParams() {
     return [
       { idArticle: "default-article-id" }, // Replace with a known fallback ID if appropriate
     ];
+  }
+}
+
+// This function generates metadata for each article page dynamically.
+export async function generateMetadata({ params }: { params: { idArticle: string } }): Promise<Metadata> {
+  const { idArticle } = params;
+  try {
+    const response = await fetch(
+      "https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/generateMetaData/",
+      { method: "GET" }
+    );
+    if (!response) {
+      return {
+        title: "Article Not Found",
+        description: `No article found with id ${idArticle}`,
+      };
+    }
+    const result = await response.json();
+    const article: BlogArticleProps = result.data;
+    return {
+      title: article.title,
+      description: article.cardsDescription || "Read our latest article on Dialogika Blog.",
+      keywords: article.keywords || "Public Speaking, Dialogika, Berbicara Didepan Umum",
+      authors: [{ name: article.authors?.[0]?.authorName || "Dialogika Team" }],
+      openGraph: {
+        title: article.title,
+        description: article.cardsDescription || "Read our latest article on Dialogika Blog.",
+        url: article.canonical || `https://www.dialogika.co/blog/${article.idArticle}`,
+        siteName: "Dialogika | Kelas Public Speaking",
+        images: [
+          {
+            url: article.thumbnail || "https://www.dialogika.co/assets/img/logo.webp",
+            alt: article.title,
+          },
+        ],
+        type: "article",
+      },
+      twitter: {
+        card: "summary_large_image",
+        site: "@dialogika_co",
+        title: article.title,
+        description: article.cardsDescription || "Read our latest article on Dialogika Blog.",
+        images: [article.thumbnail || "https://www.dialogika.co/assets/img/logo.webp"],
+      },
+      icons: {
+        icon: `/assets/img/favicon.webp`,
+        apple: `/assets/img/apple-touch-icon.webp`,
+      },
+    };
+  } catch (error: any) {
+    console.error("Error generating metadata:", error);
+    return {
+      title: "Error",
+      description: "Error fetching article metadata.",
+    };
   }
 }
