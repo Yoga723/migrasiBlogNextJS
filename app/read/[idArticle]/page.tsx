@@ -85,7 +85,7 @@ export default async function Page(props: { params: pageParams }) {
                       height={490}
                     />
                   </div>
-
+{/*  */}
                   <h1 className="title mt-0 px-4 mt-4">{article.title}</h1>
                   <div className="meta-top px-4 py-1">
                     <ul>

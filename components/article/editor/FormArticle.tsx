@@ -72,12 +72,12 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
     const externalTitle = formData.get("externalTitle")?.toString();
     const externalLink = formData.get("externalLink")?.toString();
 
-    if (externalTitle && externalLink) {
-      payload.outBoundLink = {
-        title: externalTitle || "Medium",
-        link: externalLink || "https://medium.com/dialogika",
-      };
-    }
+    // if (externalTitle && externalLink) {
+    //   payload.outBoundLink = {
+    //     title: externalTitle || "Medium",
+    //     link: externalLink || "https://medium.com/dialogika",
+    //   };
+    // }
 
     // Ambil nilai input untuk tags (tags-0, tags-1, ..., tags-9)
     const tags: string[] = [];

@@ -59,7 +59,7 @@ const articleSchema = new Schema(
   },
   {
     timestamps: true,
-    collection: "articleCollection",
+    collection: "articleCollections",
   }
 );
 
