@@ -10,9 +10,9 @@ import Link from "next/link";
 import { formatDate } from "@/components/utils/date";
 import { Metadata } from "next";
 
-type pageParams = Promise<{ idArticle: string[] }>;
-export default async function Page(props: { params: pageParams }) {
-  const { idArticle } = await props.params;
+type PageParams = { idArticle: string };
+export default async function Page({ params }: { params: PageParams }) {
+  const { idArticle } = params;
   const categoriesList = ["Confidence", "Interview", "Productivity", "Introvert", "Communication", "Presentation"];
 
   try {
@@ -85,7 +85,7 @@ export default async function Page(props: { params: pageParams }) {
                       height={490}
                     />
                   </div>
-{/*  */}
+
                   <h1 className="title mt-0 px-4 mt-4">{article.title}</h1>
                   <div className="meta-top px-4 py-1">
                     <ul>
