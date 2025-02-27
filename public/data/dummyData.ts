@@ -30,7 +30,7 @@ export const blogArticleDummy: BlogArticleProps[] = [
     writerNote:
       "Artikel ini menjelaskan pentingnya komunikasi yang baik di tempat kerja untuk meningkatkan produktivitas dan mengurangi kesalahan. Keterampilan mendengarkan dengan baik, menyampaikan pesan dengan jelas, dan membangun budaya komunikasi yang terbuka sangat penting untuk menciptakan lingkungan kerja yang lancar",
     publishedAt: new Date().toISOString(),
-    keyTakeaway: ["key Takeaway 1", "key takeaway 2"],
+
     tags: ["tags 1", "tags 2"],
     outBoundLink: { title: "Medium", link: "https://medium.com/dialogika" },
   },
@@ -59,7 +59,7 @@ export const blogArticleDummy: BlogArticleProps[] = [
     writerNote:
       "Artikel ini menjelaskan pentingnya komunikasi yang baik di tempat kerja untuk meningkatkan produktivitas dan mengurangi kesalahan. Keterampilan mendengarkan dengan baik, menyampaikan pesan dengan jelas, dan membangun budaya komunikasi yang terbuka sangat penting untuk menciptakan lingkungan kerja yang lancar",
     publishedAt: new Date().toISOString(),
-    keyTakeaway: ["key Takeaway 1", "key takeaway 2"],
+
     tags: ["tags 1", "tags 2"],
     outBoundLink: { title: "Medium", link: "https://medium.com/dialogika" },
   },
@@ -88,7 +88,7 @@ export const blogArticleDummy: BlogArticleProps[] = [
     writerNote:
       "Artikel ini menjelaskan pentingnya komunikasi yang baik di tempat kerja untuk meningkatkan produktivitas dan mengurangi kesalahan. Keterampilan mendengarkan dengan baik, menyampaikan pesan dengan jelas, dan membangun budaya komunikasi yang terbuka sangat penting untuk menciptakan lingkungan kerja yang lancar",
     publishedAt: new Date().toISOString(),
-    keyTakeaway: ["key Takeaway 1", "key takeaway 2"],
+
     tags: ["tags 1", "tags 2"],
     outBoundLink: { title: "Medium", link: "https://medium.com/dialogika" },
   },
@@ -117,7 +117,7 @@ export const blogArticleDummy: BlogArticleProps[] = [
     writerNote:
       "Artikel ini menjelaskan pentingnya komunikasi yang baik di tempat kerja untuk meningkatkan produktivitas dan mengurangi kesalahan. Keterampilan mendengarkan dengan baik, menyampaikan pesan dengan jelas, dan membangun budaya komunikasi yang terbuka sangat penting untuk menciptakan lingkungan kerja yang lancar",
     publishedAt: new Date().toISOString(),
-    keyTakeaway: ["key Takeaway 1", "key takeaway 2"],
+
     tags: ["tags 1", "tags 2"],
     outBoundLink: { title: "Medium", link: "https://medium.com/dialogika" },
   },
