@@ -58,6 +58,7 @@ const JoditRegularEditor = () => {
     }),
     []
   );
+  
 
   return (
     <div>
