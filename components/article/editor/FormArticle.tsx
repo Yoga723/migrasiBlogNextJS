@@ -30,7 +30,6 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
   // Fungsi untuk menangani submit form
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     const formData = new FormData(event.currentTarget);
     // payload ini akan digunakan untuk menampung semua data dari FormArticle
     const payload: Partial<BlogArticleProps> = {};
@@ -130,6 +129,9 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
     payload.content = content;
 
     try {
+      setIsLoading(true);
+      setSuccess(false);
+      setIsFailed(false);
       event.preventDefault();
       console.log("Submitting Article ...");
       const res = await fetch("https://blog-admin-dialogikas-projects.vercel.app/blog/api/admin/article/", {
