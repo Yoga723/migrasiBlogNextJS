@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import whiteLogo from "@/public/assets/img/white-logo.webp";
 import igImg1 from "@/public/assets/img/ig/1.jpg";
 import igImg2 from "@/public/assets/img/ig/2.jpg";
@@ -11,9 +12,13 @@ import HAM from "@/public/assets/img/ham.webp";
 import Image from "next/image";
 
 const Footer = () => {
+  const [showFooterForm, setShowFooterForm] = useState(false);
   return (
     <footer id="footer">
-      <FooterModal />
+      <FooterModal
+        show={showFooterForm}
+        onHide={() => setShowFooterForm(false)}
+      />
       <div className="footer-top">
         <div className="container">
           <div className="row justify-content-between">
@@ -402,6 +407,7 @@ const Footer = () => {
                 />
                 <button
                   type="button"
+                  onClick={() => setShowFooterForm(true)}
                   data-bs-toggle="modal"
                   data-bs-target="#footerSubModal"
                   className="appointment-btn footerSubBtn">

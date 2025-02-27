@@ -40,7 +40,7 @@ const ArticleLists = ({ articles }: articlesProps) => {
             </Link>
           </h1>
 
-          <div className="meta-top">
+          <div className="meta-top my-4">
             <ul>
               {article.authors.map((author, index) => (
                 <li

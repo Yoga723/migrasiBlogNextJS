@@ -13,7 +13,7 @@ const page = async () => {
   } catch (error) {
     console.error("Error fetching authors:", error);
     // Return a fallback UI for errors
-    return <ErrorPage message="Gagal mengambil author dari database. Silakan coba lagi nanti." />;
+    return <ErrorPage message="Gagal mengambil list author. Silakan coba lagi nanti." />;
   }
 
   return (

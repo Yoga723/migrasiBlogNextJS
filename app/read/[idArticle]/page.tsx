@@ -18,7 +18,7 @@ export default async function Page(props: { params: pageParams }) {
   try {
     console.log("Fetching Article ...");
     const res = await fetch(
-      `https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/?idArticle=${idArticle}`,
+      `https://blog-admin-dialogikas-projects.vercel.app/blog/api/admin/article/?idArticle=${idArticle}`,
       {
         method: "GET",
         headers: {
@@ -192,11 +192,11 @@ export default async function Page(props: { params: pageParams }) {
   }
 }
 
-// Automatically generate halaman html saat proses build di github pages
+// Automatically generate halaman html sesuai dengan jumlah artikel yang ada di database saat proses build di github pages
 export async function generateStaticParams() {
   try {
     const res = await fetch(
-      "https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/generateStaticParams/"
+      "https://blog-admin-dialogikas-projects.vercel.app/blog/api/admin/article/build/generateStaticParams/"
     );
     if (!res.ok) {
       throw new Error("Failed to fetch article IDs for static generation");
@@ -210,7 +210,7 @@ export async function generateStaticParams() {
     }));
   } catch (error) {
     console.error("Error fetching article IDs:", error);
-    // You can either throw an error to stop the build, or provide a default fallback list:
+
     return [
       { idArticle: "default-article-id" }, // Replace with a known fallback ID if appropriate
     ];
@@ -222,7 +222,7 @@ export async function generateMetadata(props: { params: pageParams }): Promise<M
   const { idArticle } = await props.params;
   try {
     const response = await fetch(
-      `https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/generateMetaData/?idArticle=${idArticle}`,
+      `https://blog-admin-dialogikas-projects.vercel.app/blog/api/admin/article/build/generateMetaData/?idArticle=${idArticle}`,
       { method: "GET" }
     );
     if (!response.ok) {
@@ -247,7 +247,7 @@ export async function generateMetadata(props: { params: pageParams }): Promise<M
       openGraph: {
         title: article.title,
         description: article.cardsDescription || "Read our latest article on Dialogika Blog.",
-        url: article.canonical || `https://www.dialogika.co/blog/${article.idArticle}`,
+        url: `https://www.dialogika.co/blog/read/${article.idArticle}`,
         siteName: "Dialogika | Kelas Public Speaking",
         images: [
           {
@@ -265,8 +265,8 @@ export async function generateMetadata(props: { params: pageParams }): Promise<M
         images: [article.thumbnail || "https://www.dialogika.co/assets/img/logo.webp"],
       },
       icons: {
-        icon: `/assets/img/favicon.webp`,
-        apple: `/assets/img/apple-touch-icon.webp`,
+        icon: `https://www.dialogika.co/assets/img/favicon.webp`,
+        apple: `https://www.dialogika.co/assets/img/apple-touch-icon.webp`,
       },
     };
   } catch (error: any) {

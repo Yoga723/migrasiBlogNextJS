@@ -10,7 +10,34 @@ const JoditPro = dynamic(() => import("jodit-pro-react"), {
 const JoditRichEditor = () => {
   const editor = useRef<any>(null);
   const [editorValue, setEditorValue] = useState(
-    `<p><span style="color: rgb(153, 153, 153);">ganti dengan keyword </span>- Mulai mengetik, ganti dengan isi artikel</p>`
+    `<div class="content">
+    <div class="row">
+
+        <!-- 2 first paragraph of the draft -->
+        <div class="col-lg-7 mt-4">
+            <p style="line-height: 32px;"> <span class="fw-lighter">Ganti dengan keyword -
+                </span>Bagian awal HARUS ada dua (2) paragraph, ini bagian paragraph pertama
+            </p>
+
+            <p style="line-height: 32px;">Bagian awal HARUS ada dua (2) paragraph, ini bagian paragraph kedua</p>
+        </div>
+
+        <!-- Key Takeaways -->
+        <div class="col-lg-5 mt-4">
+            <div class="card card-body key-take">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong class="title-b3">Key Takeaways</strong></li>
+                    <li class="list-group-item">Definisi Stand-up Comedy</li>
+                    <li class="list-group-item">Jenis-Jenis Stand-Up Comedy</li>
+                    <li class="list-group-item">7 Cara Dasar Membuat Materi Stand Up Comedy</li>
+                    <li class="list-group-item">Beberapa Istilah yang Sering Digunakan dalam Stand-Up Comedy</li>
+                    <li class="list-group-item">Belajar dari Para Komika Terbaik</li>
+                </ul>
+            </div>
+        </div>
+        <p>Sisa kontent dimasukkan kesini</p>
+    </div>
+</div>`
   ); // Isi dari text/Jodit editor disimpan disini
   useEffect(() => {
     const savedContent = localStorage.getItem("joditEditorContent");
@@ -42,7 +69,7 @@ const JoditRichEditor = () => {
         value={editorValue}
         name="formEditor"
         config={joditConfig}
-        tabIndex={1} // Manage focus
+        // Manage focus
         onBlur={(newContent) => {
           setEditorValue(newContent);
           localStorage.setItem("joditEditorContent", newContent);

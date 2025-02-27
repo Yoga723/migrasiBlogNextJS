@@ -39,7 +39,7 @@ export const GET = async (request: Request) => {
   try {
     await dbConnect();
     const { searchParams } = new URL(request.url);
-    const idArticle = searchParams.get("idArticle");
+    const idArticle = searchParams.get("idArticle"); // Cari custom search params idArticle
 
     if (idArticle) {
       // When idArticle is provided, return that article
@@ -53,7 +53,11 @@ export const GET = async (request: Request) => {
       return NextResponse.json({ status: "success", data: article }, { status: 200, headers: corsHeaders });
     } else {
       // No idArticle provided: return 3 latest articles
-      const articles = await Article.find().sort({ createdAt: -1 }).limit(3);
+      const limitParams = searchParams.get("limit");
+      const limit = limitParams ? Number(limitParams) : 3;
+
+      // Kirim GET request ke mongoDB, ambil data artikel yang sesuai dengan limit
+      const articles = await Article.find().sort({ createdAt: -1 }).limit(limit);
       return NextResponse.json({ status: "success", data: articles }, { status: 200, headers: corsHeaders });
     }
   } catch (error: any) {

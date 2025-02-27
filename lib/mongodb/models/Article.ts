@@ -1,7 +1,5 @@
 import mongoose, { Schema } from "mongoose";
 
-
-
 const AuthorSchema = new Schema({
   authorName: { type: String, required: true },
   imgPath: { type: String, required: true },
@@ -39,7 +37,6 @@ const articleSchema = new Schema(
     },
     cta: String,
     cardsDescription: String,
-    canonical: String,
     content: {
       type: String,
       required: [true, "Please provide the content for this article"],
@@ -53,7 +50,6 @@ const articleSchema = new Schema(
       type: String,
       required: [true, "Please provide publication date"],
     },
-    keyTakeaway: [String],
     tags: [String],
     outBoundLink: OutBoundLinkSchema,
   },

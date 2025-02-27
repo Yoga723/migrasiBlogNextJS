@@ -7,7 +7,6 @@ export interface InputProps {
   labelTitle: string;
   type?: React.HTMLInputTypeAttribute; // default untuk input adalah "text"
   placeholder?: string;
-  className?: string;
   divClassName?: string;
   inputClassName?: string;
   onChange?: () => void;
@@ -21,7 +20,7 @@ const TextInput: React.FC<InputProps> = ({
   type = "text",
   placeholder,
   description,
-  required,
+
   divClassName,
   inputClassName,
   labelTitle,
@@ -32,7 +31,7 @@ const TextInput: React.FC<InputProps> = ({
       <LabelInput
         htmlFor={name}
         title={labelTitle}
-        required={required}
+        required={props.required}
         description={description}
       />
       <input

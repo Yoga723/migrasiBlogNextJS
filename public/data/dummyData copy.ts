@@ -83,11 +83,6 @@ export interface BlogArticleProps {
     /** The publication date of the article */
     publishedAt: Date;
   
-    /**
-     * Optional array of key takeaways.
-     * Each string represents a main lesson or summary point from the article.
-     */
-    keyTakeaway?: string[];
   
     /**
      * Optional array of tags (keywords) that describe the article.

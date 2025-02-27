@@ -147,7 +147,6 @@
 }
 
 .blog-details .meta-top {
-  margin-top: 20px;
   color: rgba(var(--default-color-rgb), 0.6);
 }
 
@@ -195,6 +194,8 @@
 }
 
 .blog-details .meta-bottom {
+  display: flex;
+  gap: 7px;
   padding-top: 10px;
   border-top: 1px solid rgba(11, 43, 106, 0.1);
 }

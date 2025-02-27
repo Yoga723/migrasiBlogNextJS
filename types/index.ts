@@ -7,16 +7,10 @@ export interface BlogArticleProps {
   keywords: string;
   cta?: string;
   cardsDescription?: string;
-  canonical?: string;
   content: string;
-  authors: Array<{
-    authorName: string;
-    imgPath: string;
-    quotes?: string | "No quotes from me 🤪";
-  }>;
+  authors: Array<BlogAuthorProps>;
   writerNote: string;
   publishedAt: string;
-  keyTakeaway?: string[];
   tags?: string[];
   outBoundLink?: {
     title: string | "Medium Dialogika";
