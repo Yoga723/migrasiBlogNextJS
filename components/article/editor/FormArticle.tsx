@@ -152,7 +152,7 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
       setSuccess(true);
 
       const rebuildGithub = await fetch(
-        "https://blog-admin-dialogikas-projects.vercel.app/blog/api/admin/article/build/triggerGithubRebuild/",
+        "https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/triggerGithubRebuild/",
         { method: "POST" }
       );
 
