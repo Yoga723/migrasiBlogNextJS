@@ -7,6 +7,7 @@ import { BlogArticleProps } from "@/types";
 
 export default async function Home() {
   try {
+    console.log("Fetching Article ...");
     const getArticle = await fetch("https://blog-admin-dialogikas-projects.vercel.app/blog/api/admin/article/", {
       method: "GET",
       headers: {

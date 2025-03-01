@@ -114,7 +114,7 @@
 .blog-details .content blockquote {
   overflow: hidden;
   background-color: rgba(11, 43, 106, 0.1);
-  padding: 60px;
+  padding: 30px 60px;
   position: relative;
   text-align: center;
   margin: 20px 0;
@@ -217,6 +217,7 @@
 .blog-details .meta-bottom .cats {
   list-style: none;
   display: inline;
+  margin: 0;
   padding: 0 20px 0 0;
   font-size: 14px;
 }

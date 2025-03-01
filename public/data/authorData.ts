@@ -58,8 +58,14 @@ import theoArisadewo from "@/public/assets/img/intern/theo-arisadewo.webp";
 import virdaManikArdhana from "@/public/assets/img/intern/virda-manik-ardhana.jpg";
 import yunitaSara from "@/public/assets/img/intern/yunita-sara.jpg";
 import yusufNurohman from "@/public/assets/img/intern/yusuf-nurohman.jpg";
+import winemaAleshanee from "@/public/assets/img/intern/winema-aleshanee.webp";
 
 export const authorData: BlogAuthorProps[] = [
+  {
+    authorName: "Winema Aleshanee",
+    imgPath: winemaAleshanee.src,
+    quotes: `No quote! ~~`,
+  },
   {
     authorName: "Yusuf Nurohman",
     imgPath: yusufNurohman.src,

@@ -35,8 +35,8 @@ export const metadata: Metadata = {
     images: ["https://www.dialogika.co/assets/img/logo.webp"],
   },
   icons: {
-    icon: `${basePath}/assets/img/favicon.webp`,
-    apple: `${basePath}/assets/img/apple-touch-icon.webp`,
+    icon: `https://www.dialogika.co/assets/img/favicon.webp`,
+    apple: `https://www.dialogika.co/assets/img/apple-touch-icon.webp`,
   },
 };
 
@@ -47,20 +47,10 @@ export const GlobalScripts = () => (
       src={`${basePath}/assets/js/main.js`}
       strategy="lazyOnload"
     />
-    <Script
-      src={`${basePath}/assets/js/cart.js`}
-      strategy="lazyOnload"
-    />
 
     {/* Vendor JS */}
-    <Script
-      src={`${basePath}/assets/vendor/international-phone-number/intlTelInput.min.js`}
-      strategy="lazyOnload"
-    />
-    <Script
-      src={`${basePath}/assets/vendor/international-phone-number/script.js`}
-      strategy="lazyOnload"
-    />
+    <Script src={`../public/assets/vendor/international-phone-number/intlTelInput.min.js`} />
+    <Script src={`../public/assets/vendor/international-phone-number/script.js`} />
 
     {/* External Icons */}
     <Script

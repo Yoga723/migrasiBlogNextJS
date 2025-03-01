@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/components/utils/date";
 import { Metadata } from "next";
+import Script from "next/script";
 
 type pageParams = Promise<{ idArticle: string[] }>;
 export default async function Page(props: { params: pageParams }) {
@@ -16,7 +17,6 @@ export default async function Page(props: { params: pageParams }) {
   const categoriesList = ["Confidence", "Interview", "Productivity", "Introvert", "Communication", "Presentation"];
 
   try {
-    console.log("Fetching Article ...");
     const res = await fetch(
       `https://blog-admin-dialogikas-projects.vercel.app/blog/api/admin/article/?idArticle=${idArticle}`,
       {
@@ -47,9 +47,36 @@ export default async function Page(props: { params: pageParams }) {
     const response = await res.json();
     const article: BlogArticleProps = response.data;
 
+    // Set metadata untuk JSON-LD
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: article.title,
+      description: article.metaData || "Read our latest article on Dialogika Blog.",
+      author: {
+        "@type": "Person",
+        name: article.authors?.[0]?.authorName || "Dialogika Team",
+      },
+      datePublished: article.publishedAt,
+      image: article.thumbnail || "https://www.dialogika.co/assets/img/logo.webp",
+      publisher: {
+        "@type": "Organization",
+        name: "Dialogika",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://www.dialogika.co/assets/img/logo.webp",
+        },
+      },
+    };
+
     // Tampilkan bagian dibawah ini jika blogArticle ada
     return (
       <>
+        <Script
+          id="json-ld-article"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Breadcrumbs
           title={article.title}
           breadcrumbs={[
@@ -241,12 +268,12 @@ export async function generateMetadata(props: { params: pageParams }): Promise<M
     }
     return {
       title: article.title,
-      description: article.cardsDescription || "Read our latest article on Dialogika Blog.",
+      description: article.metaData || "Read our latest article on Dialogika Blog.",
       keywords: article.keywords || "Public Speaking, Dialogika, Berbicara Didepan Umum",
       authors: [{ name: article.authors?.[0]?.authorName || "Dialogika Team" }],
       openGraph: {
         title: article.title,
-        description: article.cardsDescription || "Read our latest article on Dialogika Blog.",
+        description: article.metaData || "Read our latest article on Dialogika Blog.",
         url: `https://www.dialogika.co/blog/read/${article.idArticle}`,
         siteName: "Dialogika | Kelas Public Speaking",
         images: [
@@ -261,7 +288,7 @@ export async function generateMetadata(props: { params: pageParams }): Promise<M
         card: "summary_large_image",
         site: "@dialogika_co",
         title: article.title,
-        description: article.cardsDescription || "Read our latest article on Dialogika Blog.",
+        description: article.metaData || "Read our latest article on Dialogika Blog.",
         images: [article.thumbnail || "https://www.dialogika.co/assets/img/logo.webp"],
       },
       icons: {
