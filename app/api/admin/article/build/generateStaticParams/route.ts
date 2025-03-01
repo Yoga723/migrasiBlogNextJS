@@ -2,14 +2,13 @@ import dbConnect from "@/lib/mongodb/mongodb";
 import Article from "@/lib/mongodb/models/Article";
 import { NextResponse } from "next/server";
 
-// Function untuk memanggil
+// Function ini digunakan server/vercel untuk GET semua artikel blog di mongoDB saat proses build di github pages 
 export async function GET() {
   try {
     // Connect to your MongoDB database
     await dbConnect();
 
     // Fetch all articles
-    // Using .lean() converts the result to plain JavaScript objects.
     const articles = await Article.find({}).lean();
 
     // Return the list as JSON.

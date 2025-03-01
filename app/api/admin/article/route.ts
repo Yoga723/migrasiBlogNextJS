@@ -42,7 +42,7 @@ export const GET = async (request: Request) => {
     const idArticle = searchParams.get("idArticle"); // Cari custom search params idArticle
 
     if (idArticle) {
-      // When idArticle is provided, return that article
+      // Bila idArticle ada, return article dengan idArticle tersebut
       const article = await Article.findOne({ idArticle: idArticle }).lean();
       if (!article) {
         return NextResponse.json(

@@ -150,6 +150,19 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
       setIsLoading(false);
       setIsFailed(false);
       setSuccess(true);
+
+      const rebuildGithub = await fetch(
+        "https://blog-admin-dialogikas-projects.vercel.app/blog/api/admin/article/build/triggerGithubRebuild/",
+        { method: "POST" }
+      );
+
+      if (!rebuildGithub.ok) {
+        const errorText = await rebuildGithub.text();
+        console.log("🚀 ~ handleFormSubmit ~ errorText:", errorText);
+      } else {
+        console.log("Berhasil redeploy github pages");
+      }
+
       // Tampilkan payload di console untuk debugging
       console.log("🚀 ~ Article Created here is the payload:", payload);
     } catch (error: any) {

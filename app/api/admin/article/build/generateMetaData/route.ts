@@ -8,6 +8,8 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
+// Function ini digunakan server/vercel untuk GET artikel blog di mongoDB yand idArticlenya sesuai
+// dan kemudian di folder [idArticle]/page.tsx datanya akan diambil dan dijadikan metadata saat proses build di github pages
 export const GET = async (request: Request) => {
   try {
     await dbConnect();
