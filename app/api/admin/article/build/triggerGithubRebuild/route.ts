@@ -32,7 +32,7 @@ export const POST = async (request: Request) => {
     });
     if (!response.ok) {
       const errorText = await response.text();
-      return NextResponse.json({ error: errorText }, { status: response.status });
+      return NextResponse.json({ error: errorText }, { status: response.status, headers: corsHeaders });
     }
     return NextResponse.json({ message: "Triggered pages rebuild successfully" });
   } catch (error: any) {
