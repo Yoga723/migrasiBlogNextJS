@@ -34,7 +34,10 @@ export const POST = async (request: Request) => {
       const errorText = await response.text();
       return NextResponse.json({ error: errorText }, { status: response.status, headers: corsHeaders });
     }
-    return NextResponse.json({ message: "Triggered pages rebuild successfully" });
+    return NextResponse.json(
+      { message: "Triggered pages rebuild successfully" },
+      { status: response.status, headers: corsHeaders }
+    );
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500, headers: corsHeaders });
   }
