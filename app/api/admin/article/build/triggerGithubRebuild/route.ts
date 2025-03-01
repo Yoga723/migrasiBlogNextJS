@@ -2,6 +2,12 @@
 import dbConnect from "@/lib/mongodb/mongodb";
 import { NextResponse } from "next/server";
 
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+};
+
 // Fungsi/Route ini digunakan server/vercel untuk memulai proses build/generate dan deploy di halaman baru di github saat tim copywriter selesai.
 //  Intinya automatisasi push blog/deploy blog
 export const POST = async (request: Request) => {
@@ -11,7 +17,7 @@ export const POST = async (request: Request) => {
   try {
     await dbConnect();
     if (!GITHUB_TOKEN || !owner || !repo) {
-      return NextResponse.json({ error: "Missing GitHub configuration" }, { status: 500 });
+      return NextResponse.json({ error: "Missing GitHub configuration" }, { status: 500, headers: corsHeaders });
     }
 
     const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/dispatches`, {
@@ -30,6 +36,6 @@ export const POST = async (request: Request) => {
     }
     return NextResponse.json({ message: "Triggered pages rebuild successfully" });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: error.message }, { status: 500, headers: corsHeaders });
   }
 };
