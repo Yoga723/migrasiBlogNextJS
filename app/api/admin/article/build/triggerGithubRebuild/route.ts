@@ -12,7 +12,7 @@ const corsHeaders = {
 //  Intinya automatisasi push blog/deploy blog
 export const POST = async (request: Request) => {
   const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-  const owner = process.env.GITHUB_OWNER; // e.g. "your-username"
+  const owner = process.env.GITHUB_OWNER; // "your-username"
   const repo = process.env.GITHUB_REPO;
   try {
     await dbConnect();
@@ -30,13 +30,18 @@ export const POST = async (request: Request) => {
         event_type: "trigger-pages-rebuild",
       }),
     });
+
     if (!response.ok) {
       const errorText = await response.text();
       return NextResponse.json({ error: errorText }, { status: response.status, headers: corsHeaders });
     }
+
+    // Override 204 status to 200 since we want to send a JSON response
+    const statusToReturn = response.status === 204 ? 200 : response.status;
+
     return NextResponse.json(
       { message: "Triggered pages rebuild successfully" },
-      { status: response.status, headers: corsHeaders }
+      { status: statusToReturn, headers: corsHeaders }
     );
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500, headers: corsHeaders });

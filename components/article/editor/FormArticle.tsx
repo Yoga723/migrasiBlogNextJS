@@ -43,7 +43,6 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
 
     // Ambil judul blog dan buat id dari judul tersebut
     const title = formData.get("title")?.toString();
-    console.log("🚀 ~ handleFormSubmit ~ title:", title);
     if (!title) return;
 
     payload.title = title;
@@ -151,17 +150,32 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
       setIsFailed(false);
       setSuccess(true);
 
-      const rebuildGithub = await fetch(
-        "https://blog-yoga723s-projects.vercel.app/blog/api/admin/article/build/triggerGithubRebuild/",
-        { method: "POST" }
-      );
+      // DELETE ENGKE CENGGG
+      // const rebuildGithub = await fetch(
+      //   "/blog/api/admin/article/build/triggerGithubRebuild/",
+      //   { method: "POST" }
+      // );
 
-      if (!rebuildGithub.ok) {
-        const errorText = await rebuildGithub.text();
-        console.log("🚀 ~ handleFormSubmit ~ errorText:", errorText);
-      } else {
-        console.log("Berhasil redeploy github pages");
-      }
+      // if (!rebuildGithub.ok) {
+      //   const errorText = await rebuildGithub.text();
+      //   console.log("🚀 ~ handleFormSubmit ~ errorText:", errorText);
+      // } else {
+      //   console.log("Berhasil redeploy github pages");
+      // }
+
+
+      // UNCOMMENT MEN BRANCH main-nextjs READY
+      // const rebuildGithub = await fetch(
+      //   "https://blog-admin-dialogikas-projects.vercel.app/blog/api/admin/article/build/triggerGithubRebuild/",
+      //   { method: "POST" }
+      // );
+
+      // if (!rebuildGithub.ok) {
+      //   const errorText = await rebuildGithub.text();
+      //   console.log("🚀 ~ handleFormSubmit ~ errorText:", errorText);
+      // } else {
+      //   console.log("Berhasil redeploy github pages");
+      // }
 
       // Tampilkan payload di console untuk debugging
       console.log("🚀 ~ Article Created here is the payload:", payload);
@@ -269,7 +283,7 @@ const FormArticle: React.FC<FormArticleProps> = ({ authors }) => {
             <DynamicInput
               name="tags"
               maxInputs={8}
-              placeholder="tags"
+              placeholder="#tags"
             />
           </div>
         </div>
